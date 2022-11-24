@@ -9,6 +9,12 @@ namespace EventsApp.Persistence
         {
         }
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(EventsAppDbContext).Assembly);
+            Seed.SeedData(modelBuilder);
+        }
+
         public DbSet<Activity> Activities { get; set; }
     }
 }
