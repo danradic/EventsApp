@@ -1,4 +1,5 @@
 using EventsApp.Application.Features.Activities.Queries.GetActivitiesList;
+using EventsApp.Application.Features.Activities.Queries.GetActivityDetail;
 using EventsApp.Domain.Entities;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -17,14 +18,14 @@ namespace EventsApp.Api.Controllers
         [HttpGet]
         public async Task<ActionResult<List<ActivityListViewModel>>> GetActivities()
         {
-            return await _mediator.Send(new GetActivitiesListQuery());
+            return Ok(await _mediator.Send(new GetActivitiesListQuery()));
             
         }
 
-        // [HttpGet("{id}")]
-        // public async Task<ActionResult<Activity>> GetActivity(Guid id)
-        // {
-        //     return await _context.Activities.FindAsync(id);
-        // }
+        [HttpGet("{id}")]
+        public async Task<ActionResult<ActivityDetailViewModel>> GetActivity(Guid id)
+        {
+            return Ok(await _mediator.Send(new GetActivityDetailQuery{ Id = id }));
+        }
     }
 }

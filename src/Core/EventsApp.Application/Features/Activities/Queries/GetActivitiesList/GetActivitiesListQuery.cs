@@ -1,4 +1,3 @@
-using EventsApp.Domain.Entities;
 using MediatR;
 
 namespace EventsApp.Application.Features.Activities.Queries.GetActivitiesList
