@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\Core\EventsApp.Domain\EventsApp.Domain.csproj" />
+    <ProjectReference Include="..\..\Core\EventsApp.Application\EventsApp.Application.csproj" />
   </ItemGroup>
 
 </Project>

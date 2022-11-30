@@ -1,3 +1,5 @@
+using EventsApp.Application.Contracts.Persistence;
+using EventsApp.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -10,6 +12,9 @@ namespace EventsApp.Persistence
         {
             services.AddDbContext<EventsAppDbContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("EventsAppConnectionString")));
+
+            services.AddScoped(typeof(IRepositoryAsync<>), typeof(BaseRepository<>));
+            services.AddScoped<IActivityRepository, ActivityRepository>();
 
             return services; 
         }
