@@ -5,7 +5,7 @@ namespace EventsApp.Persistence.Repositories
 {
     public class BaseRepository<T> : IRepositoryAsync<T> where T : class
     {
-        private readonly EventsAppDbContext _dbContext;
+        protected readonly EventsAppDbContext _dbContext;
         public BaseRepository(EventsAppDbContext dbContext)
         {
             _dbContext = dbContext;
