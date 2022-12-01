@@ -1,3 +1,4 @@
+using EventsApp.Api.Middleware;
 using EventsApp.Application;
 using EventsApp.Persistence;
 
@@ -31,10 +32,13 @@ if (app.Environment.IsDevelopment())
 
 //app.UseHttpsRedirection();
 
+app.UseCustomExceptionHandler();
+
 app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
 
 app.MapControllers();
+
 
 app.Run();
