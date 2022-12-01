@@ -38,6 +38,9 @@ namespace EventsApp.Api.Middleware
                     httpStatusCode = HttpStatusCode.BadRequest;
                     result = JsonConvert.SerializeObject(validationException.ValidationErrors);
                     break;
+                case NotFoundException notFoundException:
+                    httpStatusCode = HttpStatusCode.NotFound;
+                    break;
                 case Exception ex:
                     httpStatusCode = HttpStatusCode.BadRequest;
                     break;
