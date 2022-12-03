@@ -10,9 +10,6 @@ export default function NavBar(){
                     EventsApp
                 </Menu.Item>
                 <Menu.Item name="Activities"/>
-                <Menu.Item>
-                    <Button className="ui inverted blue button" content="Create Activity" />
-                </Menu.Item>
             </Container>
         </Menu>
     )
