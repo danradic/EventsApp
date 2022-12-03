@@ -25,7 +25,6 @@ export default function ActivityDashboard({activities} : Props) {
     }
 
     function handleFormOpen(id?: string) {
-        console.log('handleFormOpen, id=' + id);
         id ? handleSelectActivity(id) : handleCancelSelectActivity();
         setEditMode(true);
     }
@@ -40,7 +39,7 @@ export default function ActivityDashboard({activities} : Props) {
                 <ActivityList 
                     activities={activities}
                     selectActivity={handleSelectActivity}
-                    openForm={handleFormOpen} />
+                    openForm={() => handleFormOpen(undefined)} />
             </Grid.Column>
             <Grid.Column width='6'>
                 {selectedActivity && 
