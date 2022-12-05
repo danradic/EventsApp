@@ -15,7 +15,7 @@ export default function ActivityList({activities, selectActivity, openForm, dele
             <Header floated='left' as='h1'>Activities</Header>
             <Button onClick={openForm} floated='right' className="ui green button" content="Create Activity" />
         </Container>
-
+        {activities ? 
         <Segment style={{marginTop: '0'}}>
             <Item.Group divided>
                 {activities.map(activity => (
@@ -37,6 +37,7 @@ export default function ActivityList({activities, selectActivity, openForm, dele
                 ))}
             </Item.Group>
         </Segment> 
+        : null }
         </>
     )
 }

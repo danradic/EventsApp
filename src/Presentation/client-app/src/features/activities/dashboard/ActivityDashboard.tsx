@@ -1,18 +1,23 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Grid } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
 import ActivityDetails from "../details/ActivityDetails";
 import ActivityForm from "../form/ActivityForm";
 import ActivityList from "./ActivityList";
 import { v4 as uuidv4 } from 'uuid';
+import ActivityRequests from "../../../app/api/ActivityRequests";
 
 export default function ActivityDashboard() {
     const [activities, setActivities] = useState<Activity[]>([]);
 
     useEffect(() => {
-      axios.get<Activity[]>("http://localhost:5000/api/activities").then(response => {
-        setActivities(response.data);
+      ActivityRequests.getActivities().then(response => {
+        let activities: Activity[] = [];
+        response.forEach(activity => {
+            activity.date = activity.date.toString().split('T')[0];
+            activities.push(activity);
+        });
+        setActivities(activities);
       })
     }, []);
 
