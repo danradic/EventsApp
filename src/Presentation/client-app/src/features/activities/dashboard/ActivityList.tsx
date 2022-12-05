@@ -1,21 +1,20 @@
-import React, { useState } from "react";
 import { Button, Container, Header, Item, Label, Segment } from "semantic-ui-react";
 import { Activity } from "../../../app/models/activity";
 
 interface Props {
     activities: Activity[],
     selectActivity: (id: string) => void,
-    openForm: () => void 
+    openForm: () => void, 
+    deleteActivity: (id: string) => void
 }
 
-export default function ActivityList({activities, selectActivity, openForm} : Props) { 
+export default function ActivityList({activities, selectActivity, openForm, deleteActivity} : Props) { 
     return (
         <>
         <Container style={{overflow: 'hidden'}}>
             <Header floated='left' as='h1'>Activities</Header>
             <Button onClick={openForm} floated='right' className="ui green button" content="Create Activity" />
         </Container>
-
 
         <Segment style={{marginTop: '0'}}>
             <Item.Group divided>
@@ -30,6 +29,7 @@ export default function ActivityList({activities, selectActivity, openForm} : Pr
                             </Item.Description>
                             <Item.Extra>
                                 <Button onClick={() => selectActivity(activity.id)} floated='right' content='View' color='blue' />
+                                <Button onClick={() => deleteActivity(activity.id)} floated='right' content='DELETE' color='red' />
                                 <Label basic content={activity.category} />
                             </Item.Extra>
                         </Item.Content>
