@@ -6,9 +6,13 @@ import ActivityForm from "../form/ActivityForm";
 import ActivityList from "./ActivityList";
 import { v4 as uuidv4 } from 'uuid';
 import ActivityRequests from "../../../app/api/ActivityRequests";
+import LoadingComponent from "../../../app/layout/LoadingComponent";
 
 export default function ActivityDashboard() {
     const [activities, setActivities] = useState<Activity[]>([]);
+    const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
+    const [editMode, setEditMode] = useState(false);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       ActivityRequests.getActivities().then(response => {
@@ -18,11 +22,9 @@ export default function ActivityDashboard() {
             activities.push(activity);
         });
         setActivities(activities);
+        setLoading(false);
       })
     }, []);
-
-    const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
-    const [editMode, setEditMode] = useState(false);
 
     function handleSelectActivity(id: string) {
         setSelectedActivity(activities.find(a => a.id === id));
@@ -53,6 +55,8 @@ export default function ActivityDashboard() {
     function handleDeleteActivity(id: string) {
         setActivities([...activities.filter(a => a.id !== id)]);
     }
+
+    if (loading) return <LoadingComponent content='Loading...' />
 
     return (
         <Grid>
