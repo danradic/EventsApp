@@ -5,7 +5,7 @@ import ActivityDetails from "../details/ActivityDetails";
 import ActivityForm from "../form/ActivityForm";
 import ActivityList from "./ActivityList";
 import { v4 as uuidv4 } from 'uuid';
-import ActivityRequests from "../../../app/api/ActivityRequests";
+import activityApiClient from "../../../app/api/activityApiClient";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 
 export default function ActivityDashboard() {
@@ -13,9 +13,10 @@ export default function ActivityDashboard() {
     const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
     const [editMode, setEditMode] = useState(false);
     const [loading, setLoading] = useState(true);
+    const [submitting, setSubmitting] = useState(false);
 
     useEffect(() => {
-      ActivityRequests.getActivities().then(response => {
+        activityApiClient.getActivities().then(response => {
         let activities: Activity[] = [];
         response.forEach(activity => {
             activity.date = activity.date.toString().split('T')[0];
@@ -46,14 +47,31 @@ export default function ActivityDashboard() {
     } 
 
     function handleCreateOrEditActivity(activity: Activity) {
-        activity.id ? setActivities([...activities.filter(a => a.id !== activity.id), activity]) 
-        : setActivities([...activities, {...activity, id: uuidv4()}]);
-        setEditMode(false);
-        setSelectedActivity(activity);
+        setSubmitting(true);
+        if (activity.id) {
+            activityApiClient.updateActivity(activity).then(() => {
+                setActivities([...activities.filter(a => a.id !== activity.id), activity])
+                setSelectedActivity(activity);
+                setEditMode(false);
+                setSubmitting(false); 
+        })
+        } else {
+            activity.id = uuidv4();
+            activityApiClient.addActivity(activity).then(() => {
+                setActivities([...activities, activity])
+                setSelectedActivity(activity);
+                setEditMode(false);
+                setSubmitting(false); 
+            });
+        }
     }
 
     function handleDeleteActivity(id: string) {
-        setActivities([...activities.filter(a => a.id !== id)]);
+        setSubmitting(true);
+        activityApiClient.deleteActivity(id).then(() => {
+            setActivities([...activities.filter(a => a.id !== id)]);
+            setSubmitting(false);
+        });
     }
 
     if (loading) return <LoadingComponent content='Loading...' />
@@ -65,7 +83,8 @@ export default function ActivityDashboard() {
                     activities={activities}
                     selectActivity={handleSelectActivity}
                     openForm={() => handleFormOpen(undefined)} 
-                    deleteActivity={handleDeleteActivity} />
+                    deleteActivity={handleDeleteActivity}
+                    submitting={submitting} />
             </Grid.Column>
             <Grid.Column width='6'>
                 {selectedActivity && 
@@ -77,7 +96,8 @@ export default function ActivityDashboard() {
                 <ActivityForm 
                     activity={selectedActivity}
                     closeForm={handleFormClose}
-                    createOrEdit={handleCreateOrEditActivity} />}
+                    createOrEdit={handleCreateOrEditActivity}
+                    submitting={submitting} />}
             </Grid.Column>
         </Grid>
     )

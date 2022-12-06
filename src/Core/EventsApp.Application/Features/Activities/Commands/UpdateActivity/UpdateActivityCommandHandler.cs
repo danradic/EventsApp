@@ -19,10 +19,10 @@ namespace EventsApp.Application.Features.Activities.Commands.UpdateActivity
 
         public async Task<Unit> Handle(UpdateActivityCommand request, CancellationToken cancellationToken)
         {
-            var activityToUpdate = await _activityRepository.GetByIdAsync(request.ActivityId);
+            var activityToUpdate = await _activityRepository.GetByIdAsync(request.Id);
 
             if (activityToUpdate == null) 
-                throw new NotFoundException(nameof(Activity), request.ActivityId);
+                throw new NotFoundException(nameof(Activity), request.Id);
 
             var validator = new UpdateActivityCommandValidator();
             var validationResult = await validator.ValidateAsync(request, cancellationToken);

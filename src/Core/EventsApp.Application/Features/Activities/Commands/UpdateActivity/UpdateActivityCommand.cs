@@ -4,7 +4,7 @@ namespace EventsApp.Application.Features.Activities.Commands.UpdateActivity
 {
     public class UpdateActivityCommand : IRequest
     {
-        public Guid ActivityId { get; set; }
+        public Guid Id { get; set; }
         public string Title { get; set; }
         public DateTime Date { get; set; }
         public string Description { get; set; }
