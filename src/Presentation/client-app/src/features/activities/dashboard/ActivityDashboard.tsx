@@ -7,25 +7,20 @@ import ActivityList from "./ActivityList";
 import { v4 as uuidv4 } from 'uuid';
 import activityApiClient from "../../../app/api/activityApiClient";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
+import { useStore } from "../../../app/stores/storeContext";
+import { observer } from "mobx-react-lite";
 
-export default function ActivityDashboard() {
+function ActivityDashboard() {
+    const {activityStore} = useStore();
+
     const [activities, setActivities] = useState<Activity[]>([]);
     const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
     const [editMode, setEditMode] = useState(false);
-    const [loading, setLoading] = useState(true);
     const [submitting, setSubmitting] = useState(false);
 
     useEffect(() => {
-        activityApiClient.getActivities().then(response => {
-        let activities: Activity[] = [];
-        response.forEach(activity => {
-            activity.date = activity.date.toString().split('T')[0];
-            activities.push(activity);
-        });
-        setActivities(activities);
-        setLoading(false);
-      })
-    }, []);
+        activityStore.loadActivites();
+    }, [activityStore]);
 
     function handleSelectActivity(id: string) {
         setSelectedActivity(activities.find(a => a.id === id));
@@ -74,13 +69,13 @@ export default function ActivityDashboard() {
         });
     }
 
-    if (loading) return <LoadingComponent content='Loading...' />
+    if (activityStore.loadingInitial) return <LoadingComponent content='Loading...' />
 
     return (
         <Grid>
             <Grid.Column width='10'>
                 <ActivityList
-                    activities={activities}
+                    activities={activityStore.activities}
                     selectActivity={handleSelectActivity}
                     openForm={() => handleFormOpen(undefined)} 
                     deleteActivity={handleDeleteActivity}
@@ -102,3 +97,5 @@ export default function ActivityDashboard() {
         </Grid>
     )
 }
+
+export default observer(ActivityDashboard);
