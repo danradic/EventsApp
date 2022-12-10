@@ -1,3 +1,4 @@
+import { observer } from "mobx-react-lite";
 import { SyntheticEvent, useState } from "react";
 import { Button, Container, Header, Item, Label, Segment } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/storeContext";
@@ -7,7 +8,7 @@ interface Props {
     submitting: (boolean)
 }
 
-export default function ActivityList({deleteActivity, submitting} : Props) { 
+export default observer(function ActivityList({deleteActivity, submitting} : Props) { 
     const {activityStore} = useStore();
     const {openForm, selectActivity, activities} = activityStore;
 
@@ -22,7 +23,7 @@ export default function ActivityList({deleteActivity, submitting} : Props) {
         <>
         <Container style={{overflow: 'hidden'}}>
             <Header floated='left' as='h1'>Activities</Header>
-            <Button onClick={() => openForm} floated='right' className="ui green button" content="Create Activity" />
+            <Button onClick={() => openForm()} floated='right' className="ui green button" content="Create Activity" />
         </Container>
         {activities ? 
         <Segment style={{marginTop: '0'}}>
@@ -55,4 +56,4 @@ export default function ActivityList({deleteActivity, submitting} : Props) {
         : null }
         </>
     )
-}
+})

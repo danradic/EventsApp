@@ -4,7 +4,6 @@ import { Activity } from "../../../app/models/activity";
 import ActivityDetails from "../details/ActivityDetails";
 import ActivityForm from "../form/ActivityForm";
 import ActivityList from "./ActivityList";
-import { v4 as uuidv4 } from 'uuid';
 import activityApiClient from "../../../app/api/activityApiClient";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { useStore } from "../../../app/stores/storeContext";
@@ -20,26 +19,6 @@ export default observer(function ActivityDashboard() {
     useEffect(() => {
         activityStore.loadActivites();
     }, [activityStore]);
-
-    function handleCreateOrEditActivity(activity: Activity) {
-        setSubmitting(true);
-        if (activity.id) {
-            activityApiClient.updateActivity(activity).then(() => {
-                setActivities([...activities.filter(a => a.id !== activity.id), activity])
-                selectActivity(activity.id);
-                activityStore.editMode = false;
-                setSubmitting(false); 
-        })
-        } else {
-            activity.id = uuidv4();
-            activityApiClient.addActivity(activity).then(() => {
-                setActivities([...activities, activity])
-                selectActivity(activity.id);
-                activityStore.editMode = false;
-                setSubmitting(false); 
-            });
-        }
-    }
 
     function handleDeleteActivity(id: string) {
         setSubmitting(true);
@@ -62,9 +41,7 @@ export default observer(function ActivityDashboard() {
                 {activityStore.selectedActivity && 
                 <ActivityDetails />}
                 {activityStore.editMode && 
-                <ActivityForm
-                    createOrEdit={handleCreateOrEditActivity}
-                    submitting={submitting} />}
+                <ActivityForm />}
             </Grid.Column>
         </Grid>
     )
