@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { Grid } from "semantic-ui-react";
 import ActivityDetails from "../details/ActivityDetails";
 import ActivityForm from "../form/ActivityForm";
@@ -9,10 +9,10 @@ import { observer } from "mobx-react-lite";
 
 export default observer(function ActivityDashboard() {
     const {activityStore} = useStore();
-    const {loadActivites, loadingInitial, selectedActivity, editMode} = activityStore;
+    const { loadingInitial, selectedActivity, editMode} = activityStore;
 
     useEffect(() => {
-        loadActivites();
+        activityStore.loadActivites();
     }, [activityStore]);
 
     if (loadingInitial) return <LoadingComponent content='Loading...' />

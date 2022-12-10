@@ -7,7 +7,7 @@ export default observer(function ActivityForm() {
     const {activityStore} = useStore();
     const {selectedActivity, closeForm, createActivity, updateActivity, loading} = activityStore;
 
-    const initialState = activityStore.selectedActivity ?? {
+    const initialState = selectedActivity ?? {
         id: '',
         title: '',
         category: '',
