@@ -10,52 +10,32 @@ import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { useStore } from "../../../app/stores/storeContext";
 import { observer } from "mobx-react-lite";
 
-function ActivityDashboard() {
+export default observer(function ActivityDashboard() {
     const {activityStore} = useStore();
+    const {selectActivity} = activityStore;
 
     const [activities, setActivities] = useState<Activity[]>([]);
-    const [selectedActivity, setSelectedActivity] = useState<Activity | undefined>(undefined);
-    const [editMode, setEditMode] = useState(false);
     const [submitting, setSubmitting] = useState(false);
 
     useEffect(() => {
         activityStore.loadActivites();
     }, [activityStore]);
 
-    function handleSelectActivity(id: string) {
-        setSelectedActivity(activities.find(a => a.id === id));
-        setEditMode(false);
-    }
-
-    function handleCancelSelectActivity() {
-        setSelectedActivity(undefined);
-        setEditMode(false);
-    }
-
-    function handleFormOpen(id?: string) {
-        id ? handleSelectActivity(id) : handleCancelSelectActivity();
-        setEditMode(true);
-    }
-
-    function handleFormClose() {
-        setEditMode(false);
-    } 
-
     function handleCreateOrEditActivity(activity: Activity) {
         setSubmitting(true);
         if (activity.id) {
             activityApiClient.updateActivity(activity).then(() => {
                 setActivities([...activities.filter(a => a.id !== activity.id), activity])
-                setSelectedActivity(activity);
-                setEditMode(false);
+                selectActivity(activity.id);
+                activityStore.editMode = false;
                 setSubmitting(false); 
         })
         } else {
             activity.id = uuidv4();
             activityApiClient.addActivity(activity).then(() => {
                 setActivities([...activities, activity])
-                setSelectedActivity(activity);
-                setEditMode(false);
+                selectActivity(activity.id);
+                activityStore.editMode = false;
                 setSubmitting(false); 
             });
         }
@@ -75,27 +55,17 @@ function ActivityDashboard() {
         <Grid>
             <Grid.Column width='10'>
                 <ActivityList
-                    activities={activityStore.activities}
-                    selectActivity={handleSelectActivity}
-                    openForm={() => handleFormOpen(undefined)} 
                     deleteActivity={handleDeleteActivity}
                     submitting={submitting} />
             </Grid.Column>
             <Grid.Column width='6'>
-                {selectedActivity && 
-                <ActivityDetails 
-                    activity={selectedActivity}
-                    cancelSelectActivity={handleCancelSelectActivity}
-                    openEditForm={() => handleFormOpen(selectedActivity.id)}/>}
-                {editMode && 
-                <ActivityForm 
-                    activity={selectedActivity}
-                    closeForm={handleFormClose}
+                {activityStore.selectedActivity && 
+                <ActivityDetails />}
+                {activityStore.editMode && 
+                <ActivityForm
                     createOrEdit={handleCreateOrEditActivity}
                     submitting={submitting} />}
             </Grid.Column>
         </Grid>
     )
-}
-
-export default observer(ActivityDashboard);
+})
