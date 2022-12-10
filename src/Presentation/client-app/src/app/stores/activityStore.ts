@@ -55,6 +55,11 @@ export default class ActivityStore {
         this.editMode = false;
     }
 
+    viewActivityDetails = (id: string) => {
+        this.selectActivity(id);
+        this.closeForm();
+    }
+
     createActivity = async (activity: Activity) => {
         this.loading = true;
         activity.id = uuidv4();
@@ -89,6 +94,23 @@ export default class ActivityStore {
             runInAction(() => {
                 this.loading = false;
             });
+        }
+    }
+
+    deleteActivity = async (id: string) => {
+        this.loading = true
+        try {
+            await activityApiClient.deleteActivity(id);
+            runInAction(() => {
+                this.activities = [...this.activities.filter(a => a.id !== id)];
+                this.loading = false;
+                this.cancelSelectedActivity();
+
+            });
+        } catch (error) {
+            console.log(error);
+            this.loading = false;
+            this.cancelSelectedActivity();
         }
     }
 }
