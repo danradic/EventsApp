@@ -1,16 +1,15 @@
 import { SyntheticEvent, useState } from "react";
 import { Button, Container, Header, Item, Label, Segment } from "semantic-ui-react";
-import { Activity } from "../../../app/models/activity";
+import { useStore } from "../../../app/stores/storeContext";
 
 interface Props {
-    activities: Activity[],
-    selectActivity: (id: string) => void,
-    openForm: () => void, 
     deleteActivity: (id: string) => void, 
     submitting: (boolean)
 }
 
-export default function ActivityList({activities, selectActivity, openForm, deleteActivity, submitting} : Props) { 
+export default function ActivityList({deleteActivity, submitting} : Props) { 
+    const {activityStore} = useStore();
+    const {openForm, selectActivity, activities} = activityStore;
 
     const [target, setTarget] = useState('');
 
@@ -23,7 +22,7 @@ export default function ActivityList({activities, selectActivity, openForm, dele
         <>
         <Container style={{overflow: 'hidden'}}>
             <Header floated='left' as='h1'>Activities</Header>
-            <Button onClick={openForm} floated='right' className="ui green button" content="Create Activity" />
+            <Button onClick={() => openForm} floated='right' className="ui green button" content="Create Activity" />
         </Container>
         {activities ? 
         <Segment style={{marginTop: '0'}}>
