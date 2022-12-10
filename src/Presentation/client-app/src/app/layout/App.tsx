@@ -1,4 +1,4 @@
-import { Button, Container } from 'semantic-ui-react';
+import { Container } from 'semantic-ui-react';
 import NavBar from './NavBar';
 import ActivityDashboard from '../../features/activities/dashboard/ActivityDashboard';
 

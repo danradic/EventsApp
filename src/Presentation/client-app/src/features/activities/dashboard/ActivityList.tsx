@@ -5,7 +5,7 @@ import { useStore } from "../../../app/stores/storeContext";
 
 export default observer(function ActivityList() { 
     const {activityStore} = useStore();
-    const {openForm, selectActivity, activities, deleteActivity, loading, viewActivityDetails} = activityStore;
+    const {openForm, activitiesByDate, deleteActivity, loading, viewActivityDetails} = activityStore;
 
     const [target, setTarget] = useState('');
 
@@ -20,10 +20,10 @@ export default observer(function ActivityList() {
             <Header floated='left' as='h1'>Activities</Header>
             <Button onClick={() => openForm()} floated='right' className="ui green button" content="Create Activity" />
         </Container>
-        {activities ? 
+        {activitiesByDate ? 
         <Segment style={{marginTop: '0'}}>
             <Item.Group divided>
-                {activities.map(activity => (
+                {activitiesByDate.map(activity => (
                     <Item key={activity.id}>
                         <Item.Content>
                             <Item.Header as='a'> {activity.title}</Item.Header>

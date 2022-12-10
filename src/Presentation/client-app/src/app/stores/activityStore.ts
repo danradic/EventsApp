@@ -1,27 +1,31 @@
-import { action, makeAutoObservable, runInAction } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import activityApiClient from "../api/activityApiClient";
 import { Activity } from "../models/activity";
 import { v4 as uuidv4 } from 'uuid';
 
 export default class ActivityStore {
-    activities: Activity[] = [];
+    activityRegistry = new Map<string, Activity>();
     selectedActivity: Activity | undefined = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = false;
+    loadingInitial = true;
 
     constructor(){
         makeAutoObservable(this)
     }
 
+    get activitiesByDate() {
+        return Array.from(this.activityRegistry.values())
+            .sort((a,b ) => Date.parse(a.date.toString()) - Date.parse(b.date.toString()));
+    }
+
     loadActivites = async () => {
-        this.setLoadingInitial(true);
         try {
             let activities = await activityApiClient.getActivities();
             runInAction(() => {
                 activities.forEach(activity => {
                     activity.date = activity.date.toString().split('T')[0];
-                    this.activities.push(activity);
+                    this.activityRegistry.set(activity.id, activity);
                 });
                 this.setLoadingInitial(false);
             });
@@ -38,7 +42,7 @@ export default class ActivityStore {
     }
 
     selectActivity = (id: string) => {
-        this.selectedActivity = this.activities.find(a => a.id === id);
+        this.selectedActivity = this.activityRegistry.get(id);
     }
 
     cancelSelectedActivity = () => {
@@ -66,7 +70,7 @@ export default class ActivityStore {
         try {
             await activityApiClient.addActivity(activity);
             runInAction(() => {
-                this.activities.push(activity);
+                this.activityRegistry.set(activity.id, activity);
                 this.selectedActivity = activity;
                 this.editMode = false;
                 this.loading = false;
@@ -84,7 +88,7 @@ export default class ActivityStore {
         try {
             await activityApiClient.updateActivity(activity);
             runInAction(() => {
-                this.activities = [...this.activities.filter(a => a.id !== activity.id), activity]
+                this.activityRegistry.set(activity.id, activity);
                 this.selectedActivity = activity;
                 this.editMode = false;
                 this.loading = false;
@@ -102,7 +106,7 @@ export default class ActivityStore {
         try {
             await activityApiClient.deleteActivity(id);
             runInAction(() => {
-                this.activities = [...this.activities.filter(a => a.id !== id)];
+                this.activityRegistry.delete(id);
                 this.loading = false;
                 this.cancelSelectedActivity();
 
