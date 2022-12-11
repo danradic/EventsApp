@@ -22,18 +22,14 @@ export default class ActivityStore {
     loadActivites = async () => {
         try {
             let activities = await activityApiClient.getActivities();
-            runInAction(() => {
-                activities.forEach(activity => {
-                    activity.date = activity.date.toString().split('T')[0];
-                    this.activityRegistry.set(activity.id, activity);
-                });
-                this.setLoadingInitial(false);
+            activities.forEach(activity => {
+                activity.date = activity.date.toString().split('T')[0];
+                this.activityRegistry.set(activity.id, activity);
             });
+            this.setLoadingInitial(false);
         } catch (error) {
             console.log(error);
-            runInAction(() => {
-                this.setLoadingInitial(false);
-            });
+            this.setLoadingInitial(false);
         }
     }
 
