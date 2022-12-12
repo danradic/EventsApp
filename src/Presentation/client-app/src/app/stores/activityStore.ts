@@ -8,7 +8,7 @@ export default class ActivityStore {
     selectedActivity: Activity | undefined = undefined;
     editMode = false;
     loading = false;
-    loadingInitial = true;
+    loadingInitial = false;
 
     constructor(){
         makeAutoObservable(this)
@@ -41,12 +41,16 @@ export default class ActivityStore {
                 activity = await activityApiClient.getActivity(id);
                 this.setActivity(activity);
                 this.setLoadingInitial(false);
+                runInAction(() => this.selectedActivity = activity);
+                return activity;
             } catch (error) {
                 console.log(error);
                 this.setLoadingInitial(false);
             }
+        } else {
+            runInAction(() => this.selectedActivity = activity);
+            return activity;
         }
-        this.selectedActivity = activity;
     }
 
     private getActivity = (id: string) => {
