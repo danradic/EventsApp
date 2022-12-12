@@ -8,10 +8,10 @@ import { useStore } from "../../../app/stores/storeContext";
 import { v4 as uuidv4 } from 'uuid';
 
 export default observer(function ActivityForm() {
-    const {activityStore} = useStore();
-    const {createActivity, updateActivity, loading,
-        loadActivity, loadingInitial} = activityStore;
-    const {id} = useParams();
+    const { activityStore } = useStore();
+    const { createActivity, updateActivity, loading,
+        loadActivity, loadingInitial } = activityStore;
+    const { id } = useParams();
     const navigate = useNavigate();
 
     const [activity, setActivity] = useState<Activity>(
@@ -28,11 +28,11 @@ export default observer(function ActivityForm() {
 
     useEffect(() => {
         if (id) loadActivity(id).then(activity => setActivity(activity!))
-    },[id, loadActivity]);
+    }, [id, loadActivity]);
 
     function handleSubmit() {
         debugger
-        if(!activity.id) {
+        if (!activity.id) {
             activity.id = uuidv4();
             createActivity(activity).then(() => navigate(`/activities/${activity.id}`));
         } else {
@@ -41,11 +41,11 @@ export default observer(function ActivityForm() {
     }
 
     function handleInputChange(event: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-        const {name, value} = event.target;
-        setActivity({...activity, [name]: value})
+        const { name, value } = event.target;
+        setActivity({ ...activity, [name]: value })
     }
 
-    if (loadingInitial) return <LoadingComponent content="Loading activity..."/>
+    if (loadingInitial) return <LoadingComponent content="Loading activity..." />
 
     return (
         <Segment clearing>
