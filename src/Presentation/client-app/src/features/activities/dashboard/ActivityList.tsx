@@ -1,11 +1,12 @@
 import { observer } from "mobx-react-lite";
 import { SyntheticEvent, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 import { Button, Container, Header, Item, Label, Segment } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/storeContext";
 
 export default observer(function ActivityList() { 
     const {activityStore} = useStore();
-    const {openForm, activitiesByDate, deleteActivity, loading, viewActivityDetails} = activityStore;
+    const {activitiesByDate, deleteActivity, loading} = activityStore;
 
     const [target, setTarget] = useState('');
 
@@ -18,7 +19,7 @@ export default observer(function ActivityList() {
         <>
         <Container style={{overflow: 'hidden'}}>
             <Header floated='left' as='h1'>Activities</Header>
-            <Button onClick={() => openForm()} floated='right' className="ui green button" content="Create Activity" />
+            <Button as={NavLink} to='/createActivity' floated='right' className="ui green button" content="Create Activity" />
         </Container>
         {activitiesByDate ? 
         <Segment style={{marginTop: '0'}}>
@@ -33,7 +34,7 @@ export default observer(function ActivityList() {
                                 <div>{activity.city}, {activity.venue}</div>
                             </Item.Description>
                             <Item.Extra>
-                                <Button onClick={() => viewActivityDetails(activity.id)} floated='right' content='View' color='blue' />
+                                <Button as={Link} to={`/activities/${activity.id}`} floated='right' content='View' color='blue' />
                                 <Button 
                                     id={activity.id}
                                     loading={loading && target === activity.id} 
