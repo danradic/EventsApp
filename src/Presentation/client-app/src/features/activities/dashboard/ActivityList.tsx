@@ -11,19 +11,19 @@ export default observer(function ActivityList() {
 
     return (
         <>
-            <Container style={{ overflow: 'hidden' }}>
+            <Container className='activities-header-ctn' style={{ overflow: 'hidden' }}>
                 <Header floated='left' as='h1'>Activities</Header>
                 <Button as={NavLink} to='/createActivity' floated='right' className="ui green button" content="Create Activity" />
             </Container>
             {groupedActivities.map(([group, activities]) => (
-                <Fragment key={group}>
+                <Container key={group} className='activity-item-ctn'>
                     <Header sub color='teal'>
                         {group}
                     </Header>
                     {activities.map(activity => (
                         <ActivityListItem key={activity.id} activity={activity} />
                     ))}
-                </Fragment>
+                </Container>
             ))}
         </>
     )
