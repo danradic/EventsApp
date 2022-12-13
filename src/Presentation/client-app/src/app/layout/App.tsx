@@ -6,11 +6,9 @@ function App() {
   return (
     <>
       <NavBar />
-      <Container style={{marginTop: "6em"}}>
-        <Outlet />
-      </Container>
+      <Outlet />
     </>
-  );
+  )
 }
 
 export default App;
