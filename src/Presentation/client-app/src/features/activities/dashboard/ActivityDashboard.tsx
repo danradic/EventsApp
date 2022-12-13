@@ -7,7 +7,7 @@ import { observer } from "mobx-react-lite";
 import ActivityFilters from "./ActivityFilters";
 
 export default observer(function ActivityDashboard() {
-    const {activityStore} = useStore();
+    const { activityStore } = useStore();
     const { loadingInitial, activityRegistry, loadActivites } = activityStore;
 
     useEffect(() => {
@@ -17,16 +17,15 @@ export default observer(function ActivityDashboard() {
     if (loadingInitial) return <LoadingComponent content='Loading...' />
 
     return (
-        <Container>
+        <Container className="page-container">
             <Grid>
                 <Grid.Column width='10'>
                     <ActivityList />
                 </Grid.Column>
                 <Grid.Column width='6'>
-                <ActivityFilters />
+                    <ActivityFilters />
                 </Grid.Column>
             </Grid>
         </Container>
-
     )
 })

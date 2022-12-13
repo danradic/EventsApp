@@ -1,5 +1,4 @@
 import { observer } from "mobx-react-lite";
-import { Fragment } from "react";
 import { NavLink } from "react-router-dom";
 import { Button, Container, Header, Item, Segment } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/storeContext";
@@ -11,7 +10,7 @@ export default observer(function ActivityList() {
 
     return (
         <>
-            <Container className='activities-header-ctn' style={{ overflow: 'hidden', marginTop: "6em" }}>
+            <Container className='activities-header-ctn' style={{ overflow: 'hidden' }}>
                 <Header floated='left' as='h1'>Events</Header>
                 <Button as={NavLink} to='/createActivity' floated='right' className="ui green button">
                     <i className="calendar plus outline icon create-activity"></i>
