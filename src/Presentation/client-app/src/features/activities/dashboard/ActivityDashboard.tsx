@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Grid } from "semantic-ui-react";
+import { Container, Grid } from "semantic-ui-react";
 import ActivityList from "./ActivityList";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { useStore } from "../../../app/stores/storeContext";
@@ -17,13 +17,16 @@ export default observer(function ActivityDashboard() {
     if (loadingInitial) return <LoadingComponent content='Loading...' />
 
     return (
-        <Grid>
-            <Grid.Column width='10'>
-                <ActivityList />
-            </Grid.Column>
-            <Grid.Column width='6'>
-               <ActivityFilters />
-            </Grid.Column>
-        </Grid>
+        <Container>
+            <Grid>
+                <Grid.Column width='10'>
+                    <ActivityList />
+                </Grid.Column>
+                <Grid.Column width='6'>
+                <ActivityFilters />
+                </Grid.Column>
+            </Grid>
+        </Container>
+
     )
 })
