@@ -17,6 +17,10 @@ i.logo.nav {
   font-size: 1.5rem!important;
 }
 
+.page-container {
+  margin-top: 6em;
+}
+
 /*home page styles*/
 
 .masthead {
@@ -47,10 +51,10 @@ i.logo.nav {
 }
 
 i.logo.home {
-  font-size: 25px;
-  vertical-align: baseline;
+  font-size: 25px!important;
+  vertical-align: baseline!important;
   margin-left: 10px;
-  margin-right: 2px;
+  margin-right: 2px!important;
 }
 
 /*end home page*/

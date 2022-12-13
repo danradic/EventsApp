@@ -5,7 +5,7 @@ export default function HomePage() {
     return (
         <Segment inverted textAlign='center' vertical className="masthead">
             <Container text>
-                <Header as='h2' inverted content='Welcome to EventsApp'>
+                <Header as='h2' inverted>
                     Welcome to
                     <i className="react icon logo home"></i>
                     EventsApp
