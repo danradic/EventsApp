@@ -15,6 +15,8 @@ namespace EventsApp.Application.Profiles
             CreateMap<Activity, ActivityDetailViewModel>().ReverseMap();
             CreateMap<Activity, CreateActivityCommand>().ReverseMap();
             CreateMap<Activity, UpdateActivityCommand>().ReverseMap();
+            CreateMap<Activity, ActivityViewModel>().ReverseMap();
+            CreateMap<Activity, ActivityDetailViewModel>().ReverseMap();
         }
     }
 }

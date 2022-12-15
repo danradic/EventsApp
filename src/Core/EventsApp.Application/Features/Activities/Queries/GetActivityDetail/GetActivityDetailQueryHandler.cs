@@ -1,11 +1,12 @@
 using AutoMapper;
 using EventsApp.Application.Contracts.Persistence;
+using EventsApp.Application.Responses;
 using EventsApp.Domain.Entities;
 using MediatR;
 
 namespace EventsApp.Application.Features.Activities.Queries.GetActivityDetail
 {
-    public class GetActivityDetailQueryHandler : IRequestHandler<GetActivityDetailQuery, ActivityDetailViewModel>
+    public class GetActivityDetailQueryHandler : IRequestHandler<GetActivityDetailQuery, Result<ActivityDetailViewModel>>
     {
         private readonly IRepositoryAsync<Activity> _activityRepository;
         private readonly IMapper _mapper;
@@ -16,11 +17,21 @@ namespace EventsApp.Application.Features.Activities.Queries.GetActivityDetail
             _activityRepository = activityRepository;
         }
 
-        public async Task<ActivityDetailViewModel> Handle(GetActivityDetailQuery request, CancellationToken cancellationToken)
+        public async Task<Result<ActivityDetailViewModel>> Handle(GetActivityDetailQuery request, CancellationToken cancellationToken)
         {
+            var result = new Result<ActivityDetailViewModel>();
+            
             var activityDetail = await _activityRepository.GetByIdAsync(request.Id);
 
-            return _mapper.Map<ActivityDetailViewModel>(activityDetail);
+            if(activityDetail == null) 
+            {
+                result.Message = $"Activity with id {request.Id} not found";
+            }
+
+            var activityDto = _mapper.Map<ActivityDetailViewModel>(activityDetail);
+            result.Value = activityDto;
+
+            return result;
         }
     }
 }
