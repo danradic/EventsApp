@@ -1,4 +1,6 @@
 using System.Net;
+using EventsApp.Api.Errors;
+using EventsApp.Application.Errors;
 using EventsApp.Application.Exceptions;
 using Newtonsoft.Json;
 
@@ -26,32 +28,24 @@ namespace EventsApp.Api.Middleware
 
         private Task ConvertException(HttpContext context, Exception exception)
         {
-            HttpStatusCode httpStatusCode = HttpStatusCode.InternalServerError;
-
             context.Response.ContentType = "application/json";
+            context.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
 
-            var result = string.Empty;
+            var problemDetails = new CustomProblemDetails {
+                Status = (int)HttpStatusCode.InternalServerError,
+                Title = "An unexpected error occured.",
+                Detail = "500 Internal Server Error.",
+                Errors = new List<Error>() 
+                {
+                    new Error 
+                    { 
+                        ErrorMessage = exception.Message,
+                        ErrorType = ErrorType.Unexpected
+                    }
+                } 
+            };
 
-            switch (exception)
-            {
-                case ValidationException validationException:
-                    httpStatusCode = HttpStatusCode.BadRequest;
-                    result = JsonConvert.SerializeObject(validationException.ValidationErrors);
-                    break;
-                case NotFoundException notFoundException:
-                    httpStatusCode = HttpStatusCode.NotFound;
-                    break;
-                case Exception ex:
-                    httpStatusCode = HttpStatusCode.BadRequest;
-                    break;
-            }
-
-            context.Response.StatusCode = (int)httpStatusCode;
-
-            if (result == string.Empty)
-            {
-                result = JsonConvert.SerializeObject(new { error = exception.Message });
-            }
+            var result = JsonConvert.SerializeObject(problemDetails);
 
             return context.Response.WriteAsync(result);
         }

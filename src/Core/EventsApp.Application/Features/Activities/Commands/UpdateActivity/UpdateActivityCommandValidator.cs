@@ -19,7 +19,6 @@ namespace EventsApp.Application.Features.Activities.Commands.UpdateActivity
 
             RuleFor(p => p.City)
                 .NotEmpty().WithMessage("{PropertyName} is required.");
-
         }
     }
 }

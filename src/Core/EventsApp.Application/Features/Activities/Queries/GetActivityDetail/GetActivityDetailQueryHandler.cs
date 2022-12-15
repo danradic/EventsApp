@@ -1,5 +1,6 @@
 using AutoMapper;
 using EventsApp.Application.Contracts.Persistence;
+using EventsApp.Application.Errors;
 using EventsApp.Application.Responses;
 using EventsApp.Domain.Entities;
 using MediatR;
@@ -25,7 +26,18 @@ namespace EventsApp.Application.Features.Activities.Queries.GetActivityDetail
 
             if(activityDetail == null) 
             {
-                result.Message = $"Activity with id {request.Id} not found";
+                result.IsSuccess = false;
+                result.Message = "404 Not Found";
+                result.Errors = new() 
+                {
+                    new Error
+                    {
+                        ErrorMessage = $"Activity with id {request.Id} not found.",
+                        ErrorType = ErrorType.NotFound
+                    }
+                };
+                
+                return result;
             }
 
             var activityDto = _mapper.Map<ActivityDetailViewModel>(activityDetail);

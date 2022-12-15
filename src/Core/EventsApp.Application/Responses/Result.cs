@@ -1,3 +1,5 @@
+using EventsApp.Application.Errors;
+
 namespace EventsApp.Application.Responses
 {
     public class Result<T>
@@ -21,7 +23,7 @@ namespace EventsApp.Application.Responses
 
         public bool IsSuccess { get; set; }
         public string? Message { get; set; }
-        public List<string>? ValidationErrors { get; set; }
+        public List<Error>? Errors { get; set; }
         public T? Value { get; set; }
     }
 }

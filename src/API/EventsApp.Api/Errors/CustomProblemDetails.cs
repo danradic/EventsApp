@@ -1,3 +1,4 @@
+using EventsApp.Application.Errors;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsApp.Api.Errors
@@ -8,7 +9,7 @@ namespace EventsApp.Api.Errors
         {
             Errors = new();
         }
-        public List<string> Errors { get; set; }
+        public List<Error> Errors { get; set; }
 
     }
 }
