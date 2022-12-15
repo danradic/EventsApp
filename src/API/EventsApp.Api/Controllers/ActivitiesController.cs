@@ -11,22 +11,21 @@ namespace EventsApp.Api.Controllers
     {
 
         [HttpGet]
-        public async Task<ActionResult<List<ActivityListViewModel>>> GetActivities()
+        public async Task<IActionResult> GetActivities()
         {
-            return Ok(await Mediator.Send(new GetActivitiesListQuery()));
+            return HandleResult(await Mediator.Send(new GetActivitiesListQuery()));
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ActivityDetailViewModel>> GetActivity(Guid id)
+        public async Task<IActionResult> GetActivity(Guid id)
         {
-            return Ok(await Mediator.Send(new GetActivityDetailQuery{ Id = id }));
+            return HandleResult(await Mediator.Send(new GetActivityDetailQuery{ Id = id }));
         }
 
         [HttpPost(Name="AddActivity")]
-        public async Task<ActionResult<Guid>> AddActivity([FromBody] CreateActivityCommand createActivityCommand)
+        public async Task<IActionResult> AddActivity([FromBody] CreateActivityCommand createActivityCommand)
         {
-            var id = await Mediator.Send(createActivityCommand);
-            return Ok(id);
+            return HandleResult(await Mediator.Send(createActivityCommand));
         }
 
         [HttpPut(Name = "UpdateActivity")]

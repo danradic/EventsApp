@@ -1,9 +1,6 @@
-using EventsApp.Application.Responses;
-using MediatR;
-
 namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
 {
-    public class CreateActivityCommand : IRequest<Result<ActivityViewModel>>
+    public class ActivityViewModel
     {
         public Guid Id { get; set; }
         public string Title { get; set; }
