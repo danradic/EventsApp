@@ -1,4 +1,5 @@
 using EventsApp.Api.Errors;
+using EventsApp.Application.Errors;
 using EventsApp.Application.Responses;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -15,19 +16,26 @@ namespace EventsApp.Api.Controllers
 
         protected IActionResult HandleResult<T>(Result<T> result)
         {
-            if(result.IsSuccess && result.Value != null)
-                return Ok(result.Value);
-                
-            var problemDetails = new CustomProblemDetails() 
+            if (result.IsSuccess) return Ok(result.Value);
+
+            var problemDetails = new CustomProblemDetails()
             {
                 Title = result.Message,
-                Errors = result.ValidationErrors
+                Errors = result.Errors
             };
-            
-            if(result.IsSuccess && result.Value == null)
-                return NotFound(problemDetails);
-                
-            return BadRequest(problemDetails);
+
+            var firstError = result.Errors[0];
+            switch (firstError.ErrorType)
+            {
+                case ErrorType.Conflict:
+                    return Conflict(problemDetails);
+                case ErrorType.Validation:
+                    return BadRequest(problemDetails);
+                case ErrorType.NotFound:
+                    return NotFound(problemDetails);
+                default:
+                    return Problem(statusCode: 500, title: "500 Internal Server Error");
+            }
         }
     }
 }

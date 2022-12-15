@@ -25,7 +25,8 @@ namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
 
             RuleFor(e => e)
                 .MustAsync(IsEventNameAndDateUnique)
-                .WithMessage("An event with the same name and date aleady exists.");
+                .WithMessage("An event with the same name and date aleady exists.")
+                .WithErrorCode("EventNameAndDateNotUnique");
 
         }
 

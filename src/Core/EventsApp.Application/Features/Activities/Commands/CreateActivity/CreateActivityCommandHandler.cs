@@ -1,5 +1,6 @@
 using AutoMapper;
 using EventsApp.Application.Contracts.Persistence;
+using EventsApp.Application.Errors;
 using EventsApp.Application.Responses;
 using EventsApp.Domain.Entities;
 using MediatR;
@@ -23,33 +24,48 @@ namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
             var validator = new CreateActivityCommandValidator(_activityRepository);
             var validationResult = await validator.ValidateAsync(request);
 
-            if(!validationResult.IsValid)
+            if (!validationResult.IsValid)
             {
                 result.IsSuccess = false;
                 result.Message = "One or more validation errors occured";
-                result.ValidationErrors = new();
+                result.Errors = new();
 
-                foreach (var error in validationResult.Errors)
+                foreach (var validationError in validationResult.Errors)
                 {
-                    result.ValidationErrors.Add(error.ErrorMessage);
+                    Error error = new()
+                    {
+                        ErrorMessage = validationError.ErrorMessage,
+                        ErrorCode = validationError.ErrorCode,
+                        ErrorType = validationError.ErrorCode.Equals("EventNameAndDateNotUnique") ? ErrorType.Conflict : ErrorType.Validation
+                    };
+                    result.Errors.Add(error);
                 }
-                
+
                 return result;
-            } 
+            }
 
             var activity = _mapper.Map<Activity>(request);
             var addActivityResponse = await _activityRepository.AddAsync(activity);
 
-            if(addActivityResponse == null)
+            if (addActivityResponse == null)
             {
                 result.IsSuccess = false;
-                result.Message = "Failed to create activity.";
+                result.Message = "An error has occored.";
+                result.Errors = new()
+                {
+                    new Error
+                    {
+                        ErrorMessage = "Failed to create activity.",
+                        ErrorType = ErrorType.Failure
+                    }
+                };
+                
                 return result;
             }
 
             var activityDto = _mapper.Map<ActivityViewModel>(addActivityResponse);
             result.Value = activityDto;
-            
+
             return result;
         }
     }

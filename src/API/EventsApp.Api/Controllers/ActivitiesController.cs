@@ -32,21 +32,19 @@ namespace EventsApp.Api.Controllers
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> UpdateActivity([FromBody] UpdateActivityCommand updateActivityCommand) 
+        public async Task<IActionResult> UpdateActivity([FromBody] UpdateActivityCommand updateActivityCommand) 
         {
-            await Mediator.Send(updateActivityCommand);
-            return NoContent();
+            return HandleResult(await Mediator.Send(updateActivityCommand));
         }
 
         [HttpDelete("{id}", Name = "DeleteActivity")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesDefaultResponseType]
-        public async Task<ActionResult> Delete(Guid id)
+        public async Task<IActionResult> Delete(Guid id)
         {
             var deleteActivityCommand = new DeleteActivityCommand() { ActivityId = id };
-            await Mediator.Send(deleteActivityCommand);
-            return NoContent();
+            return HandleResult(await Mediator.Send(deleteActivityCommand));
         }
     }
 }
