@@ -24,8 +24,7 @@ namespace EventsApp.Api.Controllers
                 Errors = result.Errors
             };
 
-            var firstError = result.Errors[0];
-            switch (firstError.ErrorType)
+            switch (result.ErrorType)
             {
                 case ErrorType.Conflict:
                     return Conflict(problemDetails);

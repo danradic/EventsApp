@@ -4,6 +4,7 @@ using EventsApp.Application.Errors;
 using EventsApp.Application.Exceptions;
 using EventsApp.Application.Responses;
 using EventsApp.Domain.Entities;
+using FluentValidation.Results;
 using MediatR;
 
 namespace EventsApp.Application.Features.Activities.Commands.UpdateActivity
@@ -26,49 +27,19 @@ namespace EventsApp.Application.Features.Activities.Commands.UpdateActivity
             var activityToUpdate = await _activityRepository.GetByIdAsync(request.Id);
 
             if (activityToUpdate == null)
-            {
-                result.IsSuccess = false;
-                result.Message = "404 Not Found";
-                result.Errors = new() 
-                {
-                    new Error
-                    {
-                        ErrorMessage = $"Activity with id {request.Id} not found.",
-                        ErrorType = ErrorType.NotFound
-                    }
-                };
-
-                return result;
-            }
+                return Result<Unit>.Failure(errorType: ErrorType.NotFound, message: $"Activity with id {request.Id} not found.");
 
             var validator = new UpdateActivityCommandValidator();
             var validationResult = await validator.ValidateAsync(request, cancellationToken);
 
             if (!validationResult.IsValid)
-            {
-                result.IsSuccess = false;
-                result.Message = "One or more validation errors occured";
-                result.Errors = new();
+                return Result<Unit>.Failure(errors: validationResult.Errors);
 
-                foreach (var validationError in validationResult.Errors)
-                {
-                    Error error = new() 
-                    {
-                        ErrorMessage = validationError.ErrorMessage,
-                        ErrorCode = validationError.ErrorCode,
-                        ErrorType = ErrorType.Validation
-                    };
-
-                    result.Errors.Add(error);
-                }
-
-                return result;
-            }
             _mapper.Map(request, activityToUpdate, typeof(UpdateActivityCommand), typeof(Activity));
 
             await _activityRepository.UpdateAsync(activityToUpdate);
 
-            return result;
+            return Result<Unit>.Success(Unit.Value);
         }
     }
 }

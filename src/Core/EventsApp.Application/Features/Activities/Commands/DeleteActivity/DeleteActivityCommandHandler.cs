@@ -21,29 +21,14 @@ namespace EventsApp.Application.Features.Activities.Commands.DeleteActivity
 
         public async Task<Result<Unit>> Handle(DeleteActivityCommand request, CancellationToken cancellationToken)
         {
-            var result = new Result<Unit>();
-
             var activityToDelete = await _activityRepository.GetByIdAsync(request.ActivityId);
 
             if (activityToDelete == null)
-            {
-                result.IsSuccess = false;
-                result.Message = "404 Not Found";
-                result.Errors = new() 
-                {
-                    new Error
-                    {
-                        ErrorMessage = $"Activity with id {request.ActivityId} not found.",
-                        ErrorType = ErrorType.NotFound
-                    }
-                };
-
-                return result;
-            }
+                return Result<Unit>.Failure(errorType: ErrorType.NotFound, message: $"Activity with id {request.ActivityId} not found.");
 
             await _activityRepository.DeleteAsync(activityToDelete);
 
-            return result;
+            return Result<Unit>.Success(Unit.Value);
         }
     }
 }
