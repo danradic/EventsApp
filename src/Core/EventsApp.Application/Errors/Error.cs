@@ -1,9 +1,9 @@
+using FluentValidation.Results;
+
 namespace EventsApp.Application.Errors
 {
-    public class Error
+    public class Error : ValidationFailure
     {
-        public string ErrorMessage { get; set; }
-        public string ErrorCode { get; set; }
         public ErrorType ErrorType { get; set; }
     }
 }

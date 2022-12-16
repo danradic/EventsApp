@@ -20,14 +20,10 @@ namespace EventsApp.Application.Features.Activities.Queries.GetActivitiesList
 
         public async Task<Result<List<ActivityListViewModel>>> Handle(GetActivitiesListQuery request, CancellationToken cancellationToken)
         {
-            var result = new Result<List<ActivityListViewModel>>();
-
             var allActivities =  await _activityRepository.ListAllAsync();
             var activitiesDto = _mapper.Map<List<ActivityListViewModel>>(allActivities);
 
-            result.Value = activitiesDto;
-
-            return result;
+            return Result<List<ActivityListViewModel>>.Success(activitiesDto);
         }
     }
 }

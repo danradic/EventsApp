@@ -20,30 +20,14 @@ namespace EventsApp.Application.Features.Activities.Queries.GetActivityDetail
 
         public async Task<Result<ActivityDetailViewModel>> Handle(GetActivityDetailQuery request, CancellationToken cancellationToken)
         {
-            var result = new Result<ActivityDetailViewModel>();
-            
             var activityDetail = await _activityRepository.GetByIdAsync(request.Id);
 
             if(activityDetail == null) 
-            {
-                result.IsSuccess = false;
-                result.Message = "404 Not Found";
-                result.Errors = new() 
-                {
-                    new Error
-                    {
-                        ErrorMessage = $"Activity with id {request.Id} not found.",
-                        ErrorType = ErrorType.NotFound
-                    }
-                };
-                
-                return result;
-            }
+                return Result<ActivityDetailViewModel>.Failure(errorType: ErrorType.NotFound, message: $"Activity with id {request.Id} not found.");
 
             var activityDto = _mapper.Map<ActivityDetailViewModel>(activityDetail);
-            result.Value = activityDto;
 
-            return result;
+            return Result<ActivityDetailViewModel>.Success(activityDto);
         }
     }
 }
