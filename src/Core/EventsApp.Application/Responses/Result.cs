@@ -24,15 +24,13 @@ namespace EventsApp.Application.Responses
                 Errors = errors
             };
 
-        public static string ErrorMessageBy(ErrorType errorType)
-        {
-            return errorType switch
+        public static string ErrorMessageBy(ErrorType errorType) =>
+            errorType switch
             {
                 ErrorType.Conflict => "409 Conflict.",
                 ErrorType.Validation => "One or more validation errors occurred.",
                 ErrorType.NotFound => "404 Not Found.",
                 _ => "500 Internal Server Error."
             };
-        }
     }
 }

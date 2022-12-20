@@ -1,6 +1,5 @@
 using AutoMapper;
 using EventsApp.Application.Contracts.Persistence;
-using EventsApp.Application.Errors;
 using EventsApp.Application.Responses;
 using EventsApp.Domain.Entities;
 using MediatR;
