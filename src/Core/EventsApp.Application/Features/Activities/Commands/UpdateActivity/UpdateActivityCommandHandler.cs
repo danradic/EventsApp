@@ -1,10 +1,8 @@
 using AutoMapper;
 using EventsApp.Application.Contracts.Persistence;
 using EventsApp.Application.Errors;
-using EventsApp.Application.Exceptions;
 using EventsApp.Application.Responses;
 using EventsApp.Domain.Entities;
-using FluentValidation.Results;
 using MediatR;
 
 namespace EventsApp.Application.Features.Activities.Commands.UpdateActivity

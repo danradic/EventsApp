@@ -1,4 +1,3 @@
-using EventsApp.Application.Contracts.Persistence;
 using FluentValidation;
 
 namespace EventsApp.Application.Features.Activities.Commands.UpdateActivity

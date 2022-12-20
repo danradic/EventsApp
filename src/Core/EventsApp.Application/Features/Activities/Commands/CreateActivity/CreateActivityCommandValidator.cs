@@ -1,5 +1,4 @@
 using EventsApp.Application.Contracts.Persistence;
-using EventsApp.Domain.Entities;
 using FluentValidation;
 
 namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
