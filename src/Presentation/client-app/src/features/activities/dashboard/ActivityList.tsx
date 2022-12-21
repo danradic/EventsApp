@@ -1,6 +1,6 @@
 import { observer } from "mobx-react-lite";
 import { NavLink } from "react-router-dom";
-import { Button, Container, Header, Item, Segment } from "semantic-ui-react";
+import { Button, Container, Header } from "semantic-ui-react";
 import { useStore } from "../../../app/stores/storeContext";
 import ActivityListItem from "./ActivityListItem";
 

@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Container, Header, Segment, Image, Button } from "semantic-ui-react";
+import { Container, Header, Segment, Button } from "semantic-ui-react";
 
 export default function HomePage() {
     return (

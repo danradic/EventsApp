@@ -5,7 +5,6 @@ import ActivityForm from "../../features/activities/form/ActivityForm";
 import NotFound from "../../features/errors/NotFound";
 import ServerError from "../../features/errors/ServerError";
 import TestErrors from "../../features/errors/TestErrors";
-import HomePage from "../../features/home/HomePage";
 import App from "../layout/App";
 
 export const routes: RouteObject[] = [
