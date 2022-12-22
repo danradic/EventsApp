@@ -1,6 +1,7 @@
 using System.Text.Json.Serialization;
 using EventsApp.Api.Middleware;
 using EventsApp.Application;
+using EventsApp.Identity;
 using EventsApp.Persistence;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -26,6 +27,7 @@ builder.Services.AddCors(options => {
 });
 
 builder.Services.AddPersistenceServices(builder.Configuration);
+builder.Services.AddIdentityServices(builder.Configuration);
 
 var app = builder.Build();
 
