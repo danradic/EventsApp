@@ -1,5 +1,6 @@
 using AutoMapper;
 using EventsApp.Application.Contracts.Persistence;
+using EventsApp.Application.Errors;
 using EventsApp.Application.Responses;
 using EventsApp.Domain.Entities;
 using MediatR;
@@ -22,7 +23,10 @@ namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
             var validationResult = await validator.ValidateAsync(request);
 
             if (!validationResult.IsValid)
-                return Result<ActivityViewModel>.Failure(errors: validationResult.Errors);
+            {
+                var errors = _mapper.Map<List<Error>>(validationResult.Errors);
+                return Result<ActivityViewModel>.Failure(errors: errors);
+            }
 
             var activity = _mapper.Map<Activity>(request);
 
