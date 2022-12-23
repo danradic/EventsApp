@@ -7,7 +7,7 @@ namespace EventsApp.Application.Responses
     {
         public bool IsSuccess { get; set; }
         public string? Message { get; set; }
-        public List<ValidationFailure>? Errors { get; set; }
+        public List<Error>? Errors { get; set; }
         public ErrorType ErrorType { get; set; }
 
         public T? Value { get; set; }
@@ -15,7 +15,7 @@ namespace EventsApp.Application.Responses
         public static Result<T> Success(T value, string? message = null) =>
             new Result<T> { IsSuccess = true, Value = value, Message = message };
 
-        public static Result<T> Failure(ErrorType errorType = ErrorType.Validation, List<ValidationFailure>? errors = null, string? message = null) =>
+        public static Result<T> Failure(ErrorType errorType = ErrorType.Validation, List<Error>? errors = null, string? message = null) =>
             new Result<T>
             {
                 IsSuccess = false,

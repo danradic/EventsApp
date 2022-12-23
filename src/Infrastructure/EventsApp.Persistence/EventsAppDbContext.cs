@@ -5,7 +5,7 @@ namespace EventsApp.Persistence
 {
     public class EventsAppDbContext : DbContext
     {
-        public EventsAppDbContext(DbContextOptions options) : base(options)
+        public EventsAppDbContext(DbContextOptions<EventsAppDbContext> options) : base(options)
         {
         }
 

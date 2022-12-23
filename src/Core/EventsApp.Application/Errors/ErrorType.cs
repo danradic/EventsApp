@@ -9,6 +9,7 @@ namespace EventsApp.Application.Errors
         Unexpected,
         Validation,
         Conflict,
-        NotFound
+        NotFound,
+        Unauthorized
     }
 }

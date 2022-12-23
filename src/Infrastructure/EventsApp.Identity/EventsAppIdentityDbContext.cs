@@ -24,7 +24,9 @@ namespace EventsApp.Identity
                 DisplayName = "Admin",
                 Bio = "I'm an admin",
                 UserName = "admin",
+                NormalizedUserName = "admin",
                 Email = "admin@admin.com",
+                NormalizedEmail= "admin@admin.com",
                 EmailConfirmed = true
             };
 
