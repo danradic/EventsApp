@@ -1,9 +1,11 @@
 using EventsApp.Application.Models.Authentication;
 using EventsApp.Application.Contracts.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace EventsApp.Api.Controllers
 {
+    [AllowAnonymous]
     public class AccountController : BaseApiController
     {
         private readonly IAuthenticationService _authenticationService;
