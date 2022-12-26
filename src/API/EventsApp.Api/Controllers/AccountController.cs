@@ -5,7 +5,6 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace EventsApp.Api.Controllers
 {
-    [AllowAnonymous]
     public class AccountController : BaseApiController
     {
         private readonly IAuthenticationService _authenticationService;
@@ -14,16 +13,25 @@ namespace EventsApp.Api.Controllers
             _authenticationService = authenticationService;
         }
 
+        [AllowAnonymous]
         [HttpPost("login")]
         public async Task<IActionResult> AuthenticateAsync(AuthenticationRequest request)
         {
             return HandleResult(await _authenticationService.AuthenticateAsync(request));
         }
 
+        [AllowAnonymous]
         [HttpPost("register")]
         public async Task<IActionResult> RegisterAsync(RegistrationRequest request)
         {
             return HandleResult(await _authenticationService.RegisterAsync(request));
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> GetCurrentUSer()
+        {
+            return HandleResult(await _authenticationService.GetCurrentUser());
         }
     }
 }

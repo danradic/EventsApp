@@ -1,8 +1,14 @@
-﻿namespace EventsApp.Application.Models.Authentication
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace EventsApp.Application.Models.Authentication
 {
     public class AuthenticationRequest
     {
+        [Required]
+        [EmailAddress]
         public string Email { get; set; }
+
+        [Required]
         public string Password { get; set; }
     }
 }
