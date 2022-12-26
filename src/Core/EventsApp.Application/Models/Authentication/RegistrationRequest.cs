@@ -4,10 +4,9 @@ namespace EventsApp.Application.Models.Authentication
 {
     public class RegistrationRequest
     {
-        [Required] 
+        [Required]
         public string DisplayName { get; set; }
 
-        [Required]
         public string Bio { get; set; }
 
         [Required]
@@ -20,6 +19,7 @@ namespace EventsApp.Application.Models.Authentication
 
         [Required]
         [MinLength(6)]
+        [RegularExpression("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$", ErrorMessage = "Password must contain at least one uppercase, lowercase, digit and special character.")]
         public string Password { get; set; }
     }
 }

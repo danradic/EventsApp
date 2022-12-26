@@ -9,6 +9,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using EventsApp.Application.Responses;
 using EventsApp.Application.Errors;
+using Microsoft.AspNetCore.Http;
 
 namespace EventsApp.Identity.Services
 {
@@ -17,14 +18,17 @@ namespace EventsApp.Identity.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
         private readonly JwtSettings _jwtSettings;
+        private IHttpContextAccessor _httpContextAccessor;
 
         public AuthenticationService(UserManager<ApplicationUser> userManager,
             IOptions<JwtSettings> jwtSettings,
-            SignInManager<ApplicationUser> signInManager)
+            SignInManager<ApplicationUser> signInManager,
+            IHttpContextAccessor httpContextAccessor)
         {
             _userManager = userManager;
             _jwtSettings = jwtSettings.Value;
             _signInManager = signInManager;
+            _httpContextAccessor = httpContextAccessor;
         }
 
         public async Task<Result<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request)
@@ -132,6 +136,28 @@ namespace EventsApp.Identity.Services
         public async Task Logout()
         {
             await _signInManager.SignOutAsync();
+        }
+
+        public async Task<Result<AuthenticationResponse>> GetCurrentUser()
+        {
+            var claimsPrincipal = _httpContextAccessor.HttpContext?.User;
+            var appUser = await _userManager.FindByEmailAsync(claimsPrincipal.FindFirstValue(ClaimTypes.Email));
+
+            if(appUser == null)
+                return Result<AuthenticationResponse>.Failure(errorType: ErrorType.NotFound, message: "User not found.");
+
+            var jwtSecurityToken = await GenerateToken(appUser);
+            var token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+
+            var user = new AuthenticationResponse
+            {
+                DisplayName = appUser.DisplayName,
+                Image = null,
+                Token = token,
+                UserName = appUser.UserName
+            };
+
+            return Result<AuthenticationResponse>.Success(user);
         }
     }
 }

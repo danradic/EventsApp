@@ -28,9 +28,11 @@ namespace EventsApp.Identity
             services.AddIdentity<ApplicationUser, IdentityRole>()
                 .AddEntityFrameworkStores<EventsAppIdentityDbContext>().AddDefaultTokenProviders();
 
+            services.AddHttpContextAccessor();
+
             services.AddTransient<IAuthenticationService, AuthenticationService>();
 
-                        services.AddAuthentication(options =>
+            services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
@@ -77,7 +79,6 @@ namespace EventsApp.Identity
                         },
                     };
                 });
-
         }
     }
 }

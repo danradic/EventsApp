@@ -7,6 +7,7 @@ namespace EventsApp.Application.Contracts.Identity
     {
         Task<Result<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request);
         Task<Result<RegistrationResponse>> RegisterAsync(RegistrationRequest request);
+        Task<Result<AuthenticationResponse>> GetCurrentUser();
         Task Logout();
     }
 }
