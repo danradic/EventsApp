@@ -4,6 +4,7 @@ using EventsApp.Application.Features.Activities.Commands.UpdateActivity;
 using EventsApp.Application.Features.Activities.Queries.GetActivitiesList;
 using EventsApp.Application.Features.Activities.Queries.GetActivityDetail;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsApp.Api.Controllers
