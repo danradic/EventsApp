@@ -10,7 +10,7 @@ export default function HomePage() {
                     <i className="react icon logo home"></i>
                     EventsApp
                 </Header>
-                <Button as={Link} to='/activities' inverted size="huge" content='Go to Events' />
+                <Button as={Link} to='/login' inverted size="huge" content='Login' />
             </Container>
         </Segment>
     )
