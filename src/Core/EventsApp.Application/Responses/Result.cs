@@ -30,6 +30,7 @@ namespace EventsApp.Application.Responses
                 ErrorType.Conflict => "409 Conflict.",
                 ErrorType.Validation => "One or more validation errors occurred.",
                 ErrorType.NotFound => "404 Not Found.",
+                ErrorType.Unauthorized => "401 Not Authorized.",
                 _ => "500 Internal Server Error."
             };
     }
