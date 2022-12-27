@@ -60,7 +60,7 @@ const requests = {
     delete: <T>(url: string) => axios.delete<T>(url).then(resonseBody)
 }
 
-const ActivityApiClient = {
+const Activities = {
     getActivities: () => requests.get<Activity[]>('/activities'),
     getActivity: (id: string) => requests.get<Activity>(`/activities/${id}`),
     addActivity: (activity: Activity) => requests.post<void>('/activities', activity),
@@ -68,15 +68,15 @@ const ActivityApiClient = {
     deleteActivity: (id: string) => requests.delete<void>(`/activities/${id}`)
 }
 
-const AccountApiClient = {
+const Account = {
     current: () => requests.get<User>('/account'),
     login: (user: UserFormValues) => requests.post<User>('/account/login', user),
     register: (user: UserFormValues) => requests.post<User>('account/register', user)
 }
 
 const apiClient = {
-    ActivityApiClient,
-    AccountApiClient
+    Activities,
+    Account
 }
 
 export default apiClient;
