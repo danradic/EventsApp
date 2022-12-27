@@ -33,7 +33,7 @@ export default class ActivityStore {
     loadActivites = async () => {
         this.setLoadingInitial(true);
         try {
-            let activities = await apiClient.ActivityApiClient.getActivities();
+            let activities = await apiClient.Activities.getActivities();
             activities.forEach(activity => {
                 this.setActivity(activity);
             });
@@ -49,7 +49,7 @@ export default class ActivityStore {
         if (!activity) {
             this.setLoadingInitial(true);
             try {
-                activity = await apiClient.ActivityApiClient.getActivity(id);
+                activity = await apiClient.Activities.getActivity(id);
                 this.setActivity(activity);
                 this.setLoadingInitial(false);
                 runInAction(() => this.selectedActivity = activity);
@@ -81,7 +81,7 @@ export default class ActivityStore {
         this.loading = true;
         activity.id = uuidv4();
         try {
-            await apiClient.ActivityApiClient.addActivity(activity);
+            await apiClient.Activities.addActivity(activity);
             runInAction(() => {
                 this.activityRegistry.set(activity.id, activity);
                 this.selectedActivity = activity;
@@ -99,7 +99,7 @@ export default class ActivityStore {
     updateActivity = async (activity: Activity) => {
         this.loading = true;
         try {
-            await apiClient.ActivityApiClient.updateActivity(activity);
+            await apiClient.Activities.updateActivity(activity);
             runInAction(() => {
                 this.activityRegistry.set(activity.id, activity);
                 this.selectedActivity = activity;
@@ -117,7 +117,7 @@ export default class ActivityStore {
     deleteActivity = async (id: string) => {
         this.loading = true
         try {
-            await apiClient.ActivityApiClient.deleteActivity(id);
+            await apiClient.Activities.deleteActivity(id);
             runInAction(() => {
                 this.activityRegistry.delete(id);
                 this.loading = false;
