@@ -1,5 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import activityApiClient from "../api/activityApiClient";
+import apiClient from "../api/apiClient";
 import { Activity } from "../models/activity";
 import { v4 as uuidv4 } from 'uuid';
 import { format } from "date-fns";
@@ -33,7 +33,7 @@ export default class ActivityStore {
     loadActivites = async () => {
         this.setLoadingInitial(true);
         try {
-            let activities = await activityApiClient.getActivities();
+            let activities = await apiClient.ActivityApiClient.getActivities();
             activities.forEach(activity => {
                 this.setActivity(activity);
             });
@@ -49,7 +49,7 @@ export default class ActivityStore {
         if (!activity) {
             this.setLoadingInitial(true);
             try {
-                activity = await activityApiClient.getActivity(id);
+                activity = await apiClient.ActivityApiClient.getActivity(id);
                 this.setActivity(activity);
                 this.setLoadingInitial(false);
                 runInAction(() => this.selectedActivity = activity);
@@ -81,7 +81,7 @@ export default class ActivityStore {
         this.loading = true;
         activity.id = uuidv4();
         try {
-            await activityApiClient.addActivity(activity);
+            await apiClient.ActivityApiClient.addActivity(activity);
             runInAction(() => {
                 this.activityRegistry.set(activity.id, activity);
                 this.selectedActivity = activity;
@@ -99,7 +99,7 @@ export default class ActivityStore {
     updateActivity = async (activity: Activity) => {
         this.loading = true;
         try {
-            await activityApiClient.updateActivity(activity);
+            await apiClient.ActivityApiClient.updateActivity(activity);
             runInAction(() => {
                 this.activityRegistry.set(activity.id, activity);
                 this.selectedActivity = activity;
@@ -117,7 +117,7 @@ export default class ActivityStore {
     deleteActivity = async (id: string) => {
         this.loading = true
         try {
-            await activityApiClient.deleteActivity(id);
+            await apiClient.ActivityApiClient.deleteActivity(id);
             runInAction(() => {
                 this.activityRegistry.delete(id);
                 this.loading = false;

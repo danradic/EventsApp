@@ -1,6 +1,7 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import { toast } from "react-toastify";
 import { Activity } from "../models/activity";
+import { User, UserFormValues } from "../models/user";
 import { router } from "../router/Routes";
 import { store } from "../stores/storeContext";
 
@@ -59,7 +60,7 @@ const requests = {
     delete: <T>(url: string) => axios.delete<T>(url).then(resonseBody)
 }
 
-const activityApiClient = {
+const ActivityApiClient = {
     getActivities: () => requests.get<Activity[]>('/activities'),
     getActivity: (id: string) => requests.get<Activity>(`/activities/${id}`),
     addActivity: (activity: Activity) => requests.post<void>('/activities', activity),
@@ -67,4 +68,15 @@ const activityApiClient = {
     deleteActivity: (id: string) => requests.delete<void>(`/activities/${id}`)
 }
 
-export default activityApiClient;
+const AccountApiClient = {
+    current: () => requests.get<User>('/account'),
+    login: (user: UserFormValues) => requests.post<User>('/account/login', user),
+    register: (user: UserFormValues) => requests.post<User>('account/register', user)
+}
+
+const apiClient = {
+    ActivityApiClient,
+    AccountApiClient
+}
+
+export default apiClient;
