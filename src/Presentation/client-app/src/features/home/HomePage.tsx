@@ -1,9 +1,11 @@
 import { Link } from "react-router-dom";
 import { Container, Header, Segment, Button } from "semantic-ui-react";
 import { useStore } from "../../app/stores/storeContext";
+import LoginForm from "../users/LoginForm";
+import RegisterForm from "../users/RegisterForm";
 
 export default function HomePage() {
-    const { userStore } = useStore();
+    const { userStore, modalStore } = useStore();
     return (
         <Segment inverted textAlign='center' vertical className="masthead">
             <Container text>
@@ -21,7 +23,8 @@ export default function HomePage() {
                     </>
                 ) : (
                     <>
-                        <Button as={Link} to='/login' inverted size="huge" content='Login' />
+                        <Button onClick={() => modalStore.openModal(<LoginForm />)} inverted size="huge" content='Login' />
+                        <Button onClick={() => modalStore.openModal(<RegisterForm />)} inverted size="huge" content='Register' />
                     </>
                 )}
             </Container>
