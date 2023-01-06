@@ -15,7 +15,13 @@ axios.defaults.baseURL = 'http://localhost:5000/api';
 
 axios.interceptors.request.use(config => {
     const token = store.commonStore.token;
-    if(token && config.headers) config.headers.Authorization = `Bearer ${token}`;
+    if (token && config.headers) {
+        config.headers =
+        {
+            "Authorization": `Bearer ${token}`
+        }
+    }
+
     return config;
 });
 
@@ -26,10 +32,10 @@ axios.interceptors.response.use(async response => {
     const { data, status } = error.response as AxiosResponse;
     switch (status) {
         case 400:
-            if(data.errors) {
+            if (data.errors) {
                 const modalStateErrors = [];
                 for (const key in data.errors) {
-                    if(data.errors[key]) {
+                    if (data.errors[key]) {
                         modalStateErrors.push(data.errors[key]);
                     }
                 }

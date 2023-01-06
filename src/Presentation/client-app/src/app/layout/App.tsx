@@ -6,6 +6,7 @@ import HomePage from '../../features/home/HomePage';
 import { useStore } from '../stores/storeContext';
 import { useEffect } from 'react';
 import LoadingComponent from './LoadingComponent';
+import ModalContainer from '../common/modals/ModalContainer';
 
 function App() {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ function App() {
 
   return (
     <>
+      <ModalContainer />
       <ToastContainer position='bottom-right' newestOnTop hideProgressBar theme='colored' />
       {isHomePage ? <HomePage /> : (
         <>
