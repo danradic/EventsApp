@@ -26,7 +26,10 @@ namespace EventsApp.Api.Middleware
         {
             try
             {
-                await _next(context);
+                if (!context.Response.HasStarted)
+                {
+                    await _next(context);
+                }
             }
             catch (Exception ex)
             {
