@@ -29,7 +29,7 @@ namespace EventsApp.Api.Controllers
 
         [Authorize]
         [HttpGet]
-        public async Task<IActionResult> GetCurrentUSer()
+        public async Task<IActionResult> GetCurrentUser()
         {
             return HandleResult(await _authenticationService.GetCurrentUser());
         }
