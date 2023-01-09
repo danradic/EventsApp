@@ -1,21 +1,20 @@
 using EventsApp.Application.Errors;
-using FluentValidation.Results;
 
 namespace EventsApp.Application.Responses
 {
     public class Result<T>
     {
         public bool IsSuccess { get; set; }
-        public string? Message { get; set; }
-        public List<Error>? Errors { get; set; }
+        public string Message { get; set; }
+        public List<Error> Errors { get; set; }
         public ErrorType ErrorType { get; set; }
 
-        public T? Value { get; set; }
+        public T Value { get; set; }
 
-        public static Result<T> Success(T value, string? message = null) =>
+        public static Result<T> Success(T value, string message = null) =>
             new Result<T> { IsSuccess = true, Value = value, Message = message };
 
-        public static Result<T> Failure(ErrorType errorType = ErrorType.Validation, List<Error>? errors = null, string? message = null) =>
+        public static Result<T> Failure(ErrorType errorType = ErrorType.Validation, List<Error> errors = null, string message = null) =>
             new Result<T>
             {
                 IsSuccess = false,
@@ -34,7 +33,8 @@ namespace EventsApp.Application.Responses
                 _ => "500 Internal Server Error."
             };
 
-        public static List<Error> GetErrorList(string message){
+        public static List<Error> GetErrorList(string message)
+        {
             List<Error> errors = new(); 
 
             if(string.IsNullOrEmpty(message)) return errors;
