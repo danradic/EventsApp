@@ -33,8 +33,6 @@ namespace EventsApp.Identity.Services
 
         public async Task<Result<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request)
         {
-            AuthenticationResponse response = new();
-
             var user = await _userManager.FindByEmailAsync(request.Email);
 
             if (user == null)
@@ -46,14 +44,17 @@ namespace EventsApp.Identity.Services
                 return Result<AuthenticationResponse>.Failure(errorType: ErrorType.Unauthorized, message: $"Credentials for '{request.Email}' aren't valid.");
 
             JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
-            response.Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
-            response.Id = user.Id;
-            response.Email = user.Email;
-            response.UserName = user.UserName;
-            response.Image = null;
-            response.DisplayName = user.DisplayName;
 
-            return Result<AuthenticationResponse>.Success(response);
+            return Result<AuthenticationResponse>.Success(
+                new AuthenticationResponse()
+                {
+                    Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
+                    Id = user.Id,
+                    Email = user.Email,
+                    UserName = user.UserName,
+                    Image = null,
+                    DisplayName = user.DisplayName
+                });
         }
 
         public async Task<Result<RegistrationResponse>> RegisterAsync(RegistrationRequest request)
@@ -61,12 +62,32 @@ namespace EventsApp.Identity.Services
             var existingUser = await _userManager.FindByNameAsync(request.UserName);
 
             if (existingUser != null)
-                return Result<RegistrationResponse>.Failure(errorType: ErrorType.Conflict, message: $"Username '{request.UserName}' already exists.");
+            {
+                List<Error> errors = new()
+                {
+                    new Error
+                    {
+                        PropertyName = "UserName",
+                        ErrorMessage = $"Username '{request.UserName}' already exists."
+                    }
+                };
+                return Result<RegistrationResponse>.Failure(errorType: ErrorType.Registration, errors: errors);
+            }
 
             existingUser = await _userManager.FindByEmailAsync(request.Email);
 
             if (existingUser != null)
-                return Result<RegistrationResponse>.Failure(errorType: ErrorType.Conflict, message: $"Email '{request.UserName}' already exists.");
+            {
+                List<Error> errors = new()
+                {
+                    new Error
+                    {
+                        PropertyName = "Email",
+                        ErrorMessage = $"Email '{request.Email}' already exists."
+                    }
+                };
+                return Result<RegistrationResponse>.Failure(errorType: ErrorType.Registration, errors: errors);
+            }
 
             var user = new ApplicationUser
             {
@@ -85,7 +106,7 @@ namespace EventsApp.Identity.Services
 
                 foreach (var identityError in identityResult.Errors.ToList())
                 {
-                    Error error = new() 
+                    Error error = new()
                     {
                         ErrorType = ErrorType.Validation,
                         ErrorMessage = identityError.Description,
@@ -96,7 +117,7 @@ namespace EventsApp.Identity.Services
                 return Result<RegistrationResponse>.Failure(errors: errors);
             }
 
-            return Result<RegistrationResponse>.Success(new RegistrationResponse {UserId = user.Id});
+            return Result<RegistrationResponse>.Success(new RegistrationResponse { UserId = user.Id });
         }
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
@@ -143,7 +164,7 @@ namespace EventsApp.Identity.Services
             var claimsPrincipal = _httpContextAccessor.HttpContext?.User;
             var appUser = await _userManager.FindByEmailAsync(claimsPrincipal.FindFirstValue(ClaimTypes.Email));
 
-            if(appUser == null)
+            if (appUser == null)
                 return Result<AuthenticationResponse>.Failure(errorType: ErrorType.NotFound, message: "User not found.");
 
             var jwtSecurityToken = await GenerateToken(appUser);

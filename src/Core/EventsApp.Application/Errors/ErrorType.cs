@@ -10,6 +10,7 @@ namespace EventsApp.Application.Errors
         Validation,
         Conflict,
         NotFound,
-        Unauthorized
+        Unauthorized,
+        Registration
     }
 }

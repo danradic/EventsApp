@@ -21,7 +21,7 @@ namespace EventsApp.Application.Responses
                 IsSuccess = false,
                 ErrorType = errorType,
                 Message = message ??= ErrorMessageBy(errorType),
-                Errors = errors
+                Errors = errors ??= GetErrorList(message)
             };
 
         public static string ErrorMessageBy(ErrorType errorType) =>
@@ -33,5 +33,15 @@ namespace EventsApp.Application.Responses
                 ErrorType.Unauthorized => "401 Not Authorized.",
                 _ => "500 Internal Server Error."
             };
+
+        public static List<Error> GetErrorList(string message){
+            List<Error> errors = new(); 
+
+            if(string.IsNullOrEmpty(message)) return errors;
+
+            errors.Add(new Error { ErrorMessage = message });
+
+            return errors;
+        }
     }
 }

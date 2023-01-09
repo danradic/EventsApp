@@ -14,11 +14,11 @@ namespace EventsApp.Application.Models.Authentication
         public string Email { get; set; }
 
         [Required]
-        [MinLength(6)]
+        [MinLength(6, ErrorMessage = "Username must be at least 6 characters")]
         public string UserName { get; set; }
 
         [Required]
-        [MinLength(6)]
+        [MinLength(6, ErrorMessage = "Password must be at least 6 characters")]
         [RegularExpression("(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{4,8}$", ErrorMessage = "Password must contain at least one uppercase, lowercase, digit and special character.")]
         public string Password { get; set; }
     }

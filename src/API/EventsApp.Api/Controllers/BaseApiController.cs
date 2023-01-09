@@ -33,6 +33,9 @@ namespace EventsApp.Api.Controllers
                     return NotFound(problemDetails);
                 case ErrorType.Unauthorized:
                     return Unauthorized(problemDetails);
+                case ErrorType.Registration:
+                    ModelState.AddModelError(result.Errors[0].PropertyName, result.Errors[0].ErrorMessage);
+                    return ValidationProblem();
                 default:
                     return Problem(statusCode: 500, title: "500 Internal Server Error");
             }
