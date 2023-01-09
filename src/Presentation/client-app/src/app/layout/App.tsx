@@ -7,6 +7,7 @@ import { useStore } from '../stores/storeContext';
 import { useEffect } from 'react';
 import LoadingComponent from './LoadingComponent';
 import ModalContainer from '../common/modals/ModalContainer';
+import { observer } from 'mobx-react-lite';
 
 function App() {
   const { pathname } = useLocation();
@@ -21,7 +22,7 @@ function App() {
     }
   }, [commonStore, userStore]);
 
-  //if(!commonStore.appLoaded) return <LoadingComponent content='Loading app..' />
+  if(!commonStore.appLoaded) return <LoadingComponent content='Loading app..' />
 
   return (
     <>
@@ -39,4 +40,4 @@ function App() {
   )
 }
 
-export default App;
+export default observer(App);
