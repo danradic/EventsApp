@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsApp.Api", "src\API\Ev
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsApp.Identity", "src\Infrastructure\EventsApp.Identity\EventsApp.Identity.csproj", "{06D19DD2-7D38-4970-81B1-AFB09767E580}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EventsApp.Infrastructure", "src\Infrastructure\EventsApp.Infrastructure\EventsApp.Infrastructure.csproj", "{33308FD6-7B11-4C5A-8884-DF5B9EC57313}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{06D19DD2-7D38-4970-81B1-AFB09767E580}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{06D19DD2-7D38-4970-81B1-AFB09767E580}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{06D19DD2-7D38-4970-81B1-AFB09767E580}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33308FD6-7B11-4C5A-8884-DF5B9EC57313}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33308FD6-7B11-4C5A-8884-DF5B9EC57313}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33308FD6-7B11-4C5A-8884-DF5B9EC57313}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33308FD6-7B11-4C5A-8884-DF5B9EC57313}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{FE9F5306-6078-4453-970F-923FBAF664E0} = {E7E10D2A-CC18-4B6A-8693-B88F1F398656}
@@ -60,5 +66,6 @@ Global
 		{BB7615E6-244B-4531-8332-0E075990454E} = {E7E10D2A-CC18-4B6A-8693-B88F1F398656}
 		{808EB3A7-9394-44D6-908B-1AF3F6AC7509} = {BB7615E6-244B-4531-8332-0E075990454E}
 		{06D19DD2-7D38-4970-81B1-AFB09767E580} = {CE67906F-E260-40FD-A742-F27AA57E1082}
+		{33308FD6-7B11-4C5A-8884-DF5B9EC57313} = {CE67906F-E260-40FD-A742-F27AA57E1082}
 	EndGlobalSection
 EndGlobal
