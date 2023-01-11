@@ -1,3 +1,5 @@
+using EventsApp.Domain.Entities;
+
 namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
 {
     public class ActivityViewModel
@@ -9,5 +11,6 @@ namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
         public string Category { get; set; }
         public string City { get; set; }
         public string Venue { get; set; }
+        public ICollection<ActivityAttendee> Attendees { get; set; }
     }
 }

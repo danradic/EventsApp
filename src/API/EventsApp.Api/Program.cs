@@ -2,6 +2,7 @@ using System.Text.Json.Serialization;
 using EventsApp.Api.Middleware;
 using EventsApp.Application;
 using EventsApp.Identity;
+using EventsApp.Infrastructure;
 using EventsApp.Persistence;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -51,6 +52,8 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
+//builder.Services.AddHttpContextAccessor();
+builder.Services.AddInfrastructureServices();
 
 builder.Services.AddControllers( options => 
 {
@@ -61,6 +64,7 @@ builder.Services.AddControllers( options =>
 {
     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
     options.JsonSerializerOptions.DefaultIgnoreCondition = JsonIgnoreCondition.WhenWritingNull;
+    options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
 });
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

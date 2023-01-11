@@ -21,6 +21,7 @@
     <ProjectReference Include="..\..\Core\EventsApp.Application\EventsApp.Application.csproj" />
     <ProjectReference Include="..\..\Infrastructure\EventsApp.Persistence\EventsApp.Persistence.csproj" />
     <ProjectReference Include="..\..\Infrastructure\EventsApp.Identity\EventsApp.Identity.csproj" />
+    <ProjectReference Include="..\..\Infrastructure\EventsApp.Infrastructure\EventsApp.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
