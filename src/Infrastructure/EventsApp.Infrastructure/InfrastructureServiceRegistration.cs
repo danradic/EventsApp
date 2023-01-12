@@ -1,4 +1,4 @@
-using EventsApp.Application.Contracts;
+using EventsApp.Application.Contracts.Infrastructure.Security;
 using EventsApp.Infrastructure.Security;
 using Microsoft.Extensions.DependencyInjection;
 

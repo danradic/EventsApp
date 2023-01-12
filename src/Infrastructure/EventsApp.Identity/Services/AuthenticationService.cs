@@ -33,27 +33,27 @@ namespace EventsApp.Identity.Services
 
         public async Task<Result<AuthenticationResponse>> AuthenticateAsync(AuthenticationRequest request)
         {
-            var user = await _userManager.FindByEmailAsync(request.Email);
+            var appUser = await _userManager.FindByEmailAsync(request.Email);
 
-            if (user == null)
+            if (appUser == null)
                 return Result<AuthenticationResponse>.Failure(errorType: ErrorType.Unauthorized, message: $"User with email '{request.Email}' not found.");
 
-            var signInResult = await _signInManager.PasswordSignInAsync(user.UserName, request.Password, false, lockoutOnFailure: false);
+            var signInResult = await _signInManager.PasswordSignInAsync(appUser.UserName, request.Password, false, lockoutOnFailure: false);
 
             if (!signInResult.Succeeded)
                 return Result<AuthenticationResponse>.Failure(errorType: ErrorType.Unauthorized, message: $"Credentials for '{request.Email}' aren't valid.");
 
-            JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
+            JwtSecurityToken jwtSecurityToken = await GenerateToken(appUser);
 
             return Result<AuthenticationResponse>.Success(
                 new AuthenticationResponse()
                 {
                     Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
-                    Id = user.Id,
-                    Email = user.Email,
-                    UserName = user.UserName,
+                    Id = appUser.Id,
+                    Email = appUser.Email,
+                    UserName = appUser.UserName,
                     Image = null,
-                    DisplayName = user.DisplayName
+                    DisplayName = appUser.DisplayName
                 });
         }
 
@@ -89,7 +89,7 @@ namespace EventsApp.Identity.Services
                 return Result<RegistrationResponse>.Failure(errorType: ErrorType.Registration, errors: errors);
             }
 
-            var user = new ApplicationUser
+            var appUser = new ApplicationUser
             {
                 Email = request.Email,
                 DisplayName = request.DisplayName,
@@ -98,7 +98,7 @@ namespace EventsApp.Identity.Services
                 EmailConfirmed = true
             };
 
-            var identityResult = await _userManager.CreateAsync(user, request.Password);
+            var identityResult = await _userManager.CreateAsync(appUser, request.Password);
 
             if (!identityResult.Succeeded)
             {
@@ -117,7 +117,7 @@ namespace EventsApp.Identity.Services
                 return Result<RegistrationResponse>.Failure(errors: errors);
             }
 
-            return Result<RegistrationResponse>.Success(new RegistrationResponse { UserId = user.Id });
+            return Result<RegistrationResponse>.Success(new RegistrationResponse { UserId = appUser.Id });
         }
 
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
