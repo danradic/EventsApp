@@ -1,5 +1,5 @@
 using System.Security.Claims;
-using EventsApp.Application.Contracts;
+using EventsApp.Application.Contracts.Infrastructure.Security;
 using EventsApp.Application.Errors;
 using EventsApp.Application.Models;
 using EventsApp.Application.Responses;

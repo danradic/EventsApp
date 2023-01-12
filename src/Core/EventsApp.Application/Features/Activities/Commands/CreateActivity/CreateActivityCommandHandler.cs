@@ -1,5 +1,5 @@
 using AutoMapper;
-using EventsApp.Application.Contracts;
+using EventsApp.Application.Contracts.Infrastructure.Security;
 using EventsApp.Application.Contracts.Persistence;
 using EventsApp.Application.Errors;
 using EventsApp.Application.Responses;
