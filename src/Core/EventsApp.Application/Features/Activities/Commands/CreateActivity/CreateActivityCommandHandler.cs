@@ -45,6 +45,11 @@ namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
                 new ActivityAttendee
                 {
                     UserId = currentUser.Id,
+                    UserName = currentUser.UserName,
+                    DisplayName = currentUser.DisplayName,
+                    Email = currentUser.Email,
+                    Bio = currentUser.Bio,
+                    Image = currentUser.Image,
                     Activity = activity,
                     IsHost = true
                 }

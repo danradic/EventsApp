@@ -1,5 +1,6 @@
 using EventsApp.Application.Contracts.Persistence;
 using EventsApp.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventsApp.Persistence.Repositories
 {
@@ -15,5 +16,18 @@ namespace EventsApp.Persistence.Repositories
 
             return Task.FromResult(matches);
         }
+
+        public async Task<List<Activity>> GetActivitiesWithAttendees(bool includePassedActivites)
+        {
+            var activities = await _dbContext.Activities.Include(x => x.Attendees).ToListAsync();
+
+            if(!includePassedActivites)
+            {
+                activities.RemoveAll(c => c.Date < DateTime.Today);
+            }
+
+            return activities;
+        }
+
     }
 }

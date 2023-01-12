@@ -1,3 +1,5 @@
+using EventsApp.Application.Models;
+
 namespace EventsApp.Application.Features.Activities.Queries.GetActivitiesList
 {
     public class ActivityListViewModel
@@ -9,5 +11,8 @@ namespace EventsApp.Application.Features.Activities.Queries.GetActivitiesList
         public string Category { get; set; }
         public string City { get; set; }
         public string Venue { get; set; }
+        public string HostUsername { get; set; }
+        public ICollection<User> Attendees { get; set; }
+
     }
 }
