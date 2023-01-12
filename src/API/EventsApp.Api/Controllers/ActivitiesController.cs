@@ -9,7 +9,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EventsApp.Api.Controllers
 {
-    [AllowAnonymous]
     public class ActivitiesController : BaseApiController
     {
         private readonly IMediator _mediator;
