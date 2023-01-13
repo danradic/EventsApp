@@ -15,7 +15,7 @@ function App() {
   const { commonStore, userStore } = useStore();
 
   useEffect(() => {
-    if (commonStore.token) {
+    if (commonStore.token && !commonStore.isTokenExpired(commonStore.tokenExpireDate)) {
       userStore.getUser().finally(() => {
         commonStore.setAppLoaded()});
     } else {
