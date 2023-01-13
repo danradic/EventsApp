@@ -19,6 +19,7 @@ export default class UserStore {
         try {
             const user = await apiClient.Account.login(creds) 
             store.commonStore.setToken(user.token);
+            store.commonStore.setTokenExpires(user.tokenExpires);
             runInAction(()=> this.user = user);
             router.navigate('/activities');
             store.modalStore.closeModal();
@@ -41,6 +42,7 @@ export default class UserStore {
 
     logout = () => {
         store.commonStore.setToken(null);
+        store.commonStore.setTokenExpires(null);
         this.user = null;
         router.navigate('/');
     }

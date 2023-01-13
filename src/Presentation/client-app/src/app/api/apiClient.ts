@@ -15,7 +15,10 @@ axios.defaults.baseURL = 'http://localhost:5000/api';
 
 axios.interceptors.request.use(config => {
     const token = store.commonStore.token;
-    if (token && config.headers) {
+    const tokenExpireDate = store.commonStore.tokenExpireDate;
+    const isTokenExpired = store.commonStore.isTokenExpired(tokenExpireDate);
+
+    if (token && config.headers && !isTokenExpired) {
         config.headers =
         {
             "Authorization": `Bearer ${token}`

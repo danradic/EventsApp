@@ -4,6 +4,7 @@ import { ProblemDetails } from "../models/problemDetails";
 export default class CommonStore {
     problemDetails: ProblemDetails | null = null;
     token: string | null = localStorage.getItem('jwt');
+    tokenExpireDate: string | null = localStorage.getItem('jwtExpireDate');
     appLoaded = false;
 
     constructor() {
@@ -19,6 +20,16 @@ export default class CommonStore {
                 }
             }
         )
+        reaction(
+            () => this.tokenExpireDate,
+            tokenExpireDate => {
+                if (tokenExpireDate) {
+                    localStorage.setItem('jwtExpireDate', tokenExpireDate)
+                } else {
+                    localStorage.removeItem('jwtExpireDate')
+                }
+            }
+        )
     }
 
     setServerError(problemDetails: ProblemDetails) {
@@ -27,6 +38,17 @@ export default class CommonStore {
 
     setToken = (token: string | null) => {
         this.token = token;
+    }
+
+    setTokenExpires = (tokenExpireDate: string | null) => {
+        this.tokenExpireDate = tokenExpireDate;
+    }
+
+    isTokenExpired = (tokenExpires: string | null) => {
+        const jwtExpireDate = new Date(tokenExpires!);
+        const nowDate = new Date();
+        if(jwtExpireDate < nowDate) return true;
+        return false;
     }
 
     setAppLoaded = () => {

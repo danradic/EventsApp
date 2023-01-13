@@ -49,6 +49,7 @@ namespace EventsApp.Identity.Services
                 new AuthenticationResponse()
                 {
                     Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken),
+                    TokenExpires = jwtSecurityToken.ValidTo,
                     Id = appUser.Id,
                     Email = appUser.Email,
                     UserName = appUser.UserName,

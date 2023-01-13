@@ -8,6 +8,7 @@
         public string Email { get; set; }
         public string Image { get; set; }
         public string Token { get; set; }
+        public DateTime TokenExpires { get; set; }
         public string ErrorMessage { get; set; }
     }
 }
