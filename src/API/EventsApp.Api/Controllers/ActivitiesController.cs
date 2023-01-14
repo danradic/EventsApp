@@ -36,6 +36,7 @@ namespace EventsApp.Api.Controllers
             return HandleResult(await _mediator.Send(createActivityCommand));
         }
 
+        [Authorize(Policy = "IsActivityHost")]
         [HttpPut(Name = "UpdateActivity")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -45,6 +46,7 @@ namespace EventsApp.Api.Controllers
             return HandleResult(await _mediator.Send(updateActivityCommand));
         }
 
+        [Authorize(Policy = "IsActivityHost")]
         [HttpDelete("{id}", Name = "DeleteActivity")]
         [ProducesResponseType(StatusCodes.Status204NoContent)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

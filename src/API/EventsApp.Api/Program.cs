@@ -52,13 +52,12 @@ builder.Services.AddSwaggerGen(c =>
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
-//builder.Services.AddHttpContextAccessor();
 builder.Services.AddInfrastructureServices();
 
 builder.Services.AddControllers( options => 
 {
-    var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
-    options.Filters.Add(new AuthorizeFilter(policy));
+    //var policy = new AuthorizationPolicyBuilder().RequireAuthenticatedUser().Build();
+    //options.Filters.Add(new AuthorizeFilter(policy));
 })
 .AddJsonOptions(options =>
 {
@@ -87,6 +86,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.UseDeveloperExceptionPage();
 }
 
 //app.UseHttpsRedirection();
