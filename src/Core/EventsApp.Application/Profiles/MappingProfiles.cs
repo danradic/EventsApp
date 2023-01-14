@@ -16,8 +16,11 @@ namespace EventsApp.Application.Profiles
         {
             CreateMap<Activity, ActivityListViewModel>()
                 .ForMember(d => d.HostUsername, o => o.MapFrom(s => s.Attendees
-                    .FirstOrDefault(x => x.IsHost).UserName))
-                .ReverseMap();
+                    .FirstOrDefault(x => x.IsHost).UserName));
+            CreateMap<Activity, ActivityDetailViewModel>()
+                .ForMember(d => d.HostUsername, o => o.MapFrom(s => s.Attendees
+                    .FirstOrDefault(x => x.IsHost).UserName));
+                    
             CreateMap<ActivityAttendee, User>()
                 .ForMember(d => d.Id, o => o.MapFrom(s => s.UserId))
                 .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.DisplayName))
@@ -26,15 +29,11 @@ namespace EventsApp.Application.Profiles
                 .ForMember(d => d.Bio, o => o.MapFrom(s => s.Bio))
                 .ForMember(d => d.Image, o => o.MapFrom(s => s.Image));
 
-            CreateMap<Activity, ActivityDetailViewModel>().ReverseMap();
             CreateMap<Activity, CreateActivityCommand>().ReverseMap();
             CreateMap<Activity, UpdateActivityCommand>().ReverseMap();
             CreateMap<Activity, ActivityViewModel>().ReverseMap();
-            CreateMap<Activity, ActivityDetailViewModel>().ReverseMap();
             
             CreateMap<Error, ValidationFailure>().ReverseMap();
-            // CreateMap<List<Error>, List<ValidationFailure>>().ReverseMap();
-
         }
     }
 }
