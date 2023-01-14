@@ -29,5 +29,12 @@ namespace EventsApp.Persistence.Repositories
             return activities;
         }
 
+        public Task<Activity> GetActivityDetailWithAttendees(Guid id)
+        {
+            var activityDetail = _dbContext.Activities.Where(a => a.Id == id).Include(x => x.Attendees).FirstOrDefault();
+
+            return Task.FromResult(activityDetail);
+        }
+
     }
 }
