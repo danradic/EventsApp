@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Core\EventsApp.Application\EventsApp.Application.csproj" />
     <ProjectReference Include="..\EventsApp.Identity\EventsApp.Identity.csproj" />
+    <ProjectReference Include="..\EventsApp.Persistence\EventsApp.Persistence.csproj" />
   </ItemGroup>
 
   <ItemGroup>
