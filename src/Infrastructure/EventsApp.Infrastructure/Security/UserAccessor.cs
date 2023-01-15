@@ -29,7 +29,7 @@ namespace EventsApp.Infrastructure.Security
 
             var user = new User
             {
-                Id = appUser.Id,
+                UserId = appUser.Id,
                 DisplayName = appUser.DisplayName,
                 Image = null,
                 UserName = appUser.UserName
