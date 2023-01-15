@@ -3,6 +3,7 @@ using EventsApp.Application.Features.Activities.Commands.DeleteActivity;
 using EventsApp.Application.Features.Activities.Commands.UpdateActivity;
 using EventsApp.Application.Features.Activities.Queries.GetActivitiesList;
 using EventsApp.Application.Features.Activities.Queries.GetActivityDetail;
+using EventsApp.Application.Features.Attendance.Commands.UpdateAttendance;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -55,6 +56,12 @@ namespace EventsApp.Api.Controllers
         {
             var deleteActivityCommand = new DeleteActivityCommand() { ActivityId = id };
             return HandleResult(await _mediator.Send(deleteActivityCommand));
+        }
+
+        [HttpPost("{id}/attend")]
+        public async Task<IActionResult> Attend(Guid id)
+        {
+            return HandleResult(await _mediator.Send(new UpdateAttendanceCommand { Id = id }));
         }
     }
 }

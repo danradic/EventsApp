@@ -12,6 +12,7 @@ namespace EventsApp.Application.Features.Activities.Queries.GetActivityDetail
         public string City { get; set; }
         public string Venue { get; set; }
         public string HostUsername { get; set; }
+        public bool IsCancelled { get; set; }
         public ICollection<User> Attendees { get; set; }
     }
 }
