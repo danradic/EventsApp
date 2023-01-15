@@ -44,7 +44,7 @@ namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
             {
                 new ActivityAttendee
                 {
-                    UserId = currentUser.Id,
+                    UserId = currentUser.UserId,
                     UserName = currentUser.UserName,
                     DisplayName = currentUser.DisplayName,
                     Email = currentUser.Email,

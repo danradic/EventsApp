@@ -22,7 +22,7 @@ namespace EventsApp.Application.Profiles
                     .FirstOrDefault(x => x.IsHost).UserName));
                     
             CreateMap<ActivityAttendee, User>()
-                .ForMember(d => d.Id, o => o.MapFrom(s => s.UserId))
+                .ForMember(d => d.UserId, o => o.MapFrom(s => s.UserId))
                 .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.DisplayName))
                 .ForMember(d => d.UserName, o => o.MapFrom(s => s.UserName))
                 .ForMember(d => d.Email, o => o.MapFrom(s => s.Email))

@@ -43,7 +43,7 @@ namespace EventsApp.Application.Features.Attendance.Commands.UpdateAttendance
                 activityAttendee = new ActivityAttendee 
                 {
                     Activity = activity,
-                    UserId = currentUserResult.Value.Id,
+                    UserId = currentUserResult.Value.UserId,
                     DisplayName = currentUserResult.Value.DisplayName,
                     UserName = currentUserResult.Value.UserName,
                     Email = currentUserResult.Value.Email,
