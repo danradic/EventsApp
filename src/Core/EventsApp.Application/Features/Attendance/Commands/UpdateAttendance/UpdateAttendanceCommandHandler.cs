@@ -40,7 +40,7 @@ namespace EventsApp.Application.Features.Attendance.Commands.UpdateAttendance
 
             if(!isCurrentUserAnAttendee)
             {
-                activityAttendee = new ActivityAttendee
+                activityAttendee = new ActivityAttendee 
                 {
                     Activity = activity,
                     UserId = currentUserResult.Value.Id,
