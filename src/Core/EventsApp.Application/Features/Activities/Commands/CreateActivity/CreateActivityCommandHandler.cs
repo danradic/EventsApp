@@ -55,11 +55,11 @@ namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
                 }
             };
 
-            var addActivityResponse = await _activityRepository.AddAsync(activity);
+            var isActivityCreated = await _activityRepository.AddAsync(activity) > 0;
 
-            var activityDto = _mapper.Map<ActivityViewModel>(addActivityResponse);
-
-            return Result<ActivityViewModel>.Success(activityDto);
+            return isActivityCreated ? 
+                Result<ActivityViewModel>.Success(_mapper.Map<ActivityViewModel>(activity)) : 
+                Result<ActivityViewModel>.Failure(errorType: ErrorType.Failure, message: "Problem creating activity.");
         }
     }
 }

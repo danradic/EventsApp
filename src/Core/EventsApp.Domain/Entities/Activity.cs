@@ -9,6 +9,7 @@ namespace EventsApp.Domain.Entities
         public string Category { get; set; }
         public string City { get; set; }
         public string Venue { get; set; }
+        public bool IsCancelled { get; set; }
         public ICollection<ActivityAttendee> Attendees { get; set; }
     }
 }

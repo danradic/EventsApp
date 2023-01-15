@@ -11,18 +11,16 @@ namespace EventsApp.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public async Task<T> AddAsync(T entity)
+        public async Task<int> AddAsync(T entity)
         {
             await _dbContext.Set<T>().AddAsync(entity);
-            await _dbContext.SaveChangesAsync();
-
-            return entity;
+            return await _dbContext.SaveChangesAsync();
         }
 
-        public async Task DeleteAsync(T entity)
+        public async Task<int> DeleteAsync(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
-            await _dbContext.SaveChangesAsync();
+            return await _dbContext.SaveChangesAsync();
         }
 
         public async Task<T> GetByIdAsync(Guid id)
@@ -35,10 +33,10 @@ namespace EventsApp.Persistence.Repositories
             return await _dbContext.Set<T>().ToListAsync();
         }
 
-        public async Task UpdateAsync(T entity)
+        public async Task<int> UpdateAsync(T entity)
         {
             _dbContext.Entry(entity).State = EntityState.Modified;
-            await _dbContext.SaveChangesAsync();
+            return await _dbContext.SaveChangesAsync();
         }
     }
 }
