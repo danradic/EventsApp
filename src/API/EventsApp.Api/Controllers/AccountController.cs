@@ -13,7 +13,7 @@ namespace EventsApp.Api.Controllers
             _authenticationService = authenticationService;
         }
 
-        [AllowAnonymous]
+        [AllowAnonymous] 
         [HttpPost("login")]
         public async Task<IActionResult> AuthenticateAsync(AuthenticationRequest request)
         {
