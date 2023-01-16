@@ -116,6 +116,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-92A4-EDC76B7C5DDE}"),
                     UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
                     UserName = "bob",
+                    DisplayName = "Bob",
                     Email = "bob@test.com",
                     IsHost = true
                 },
@@ -125,6 +126,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0708D2F-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
                     UserName = "bob",
+                    DisplayName = "Bob",
                     Email = "bob@test.com",
                     IsHost = true
                 },
@@ -134,6 +136,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0708D2F-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
                     UserName = "jane",
+                    DisplayName = "Jane",
                     Email = "jane@test.com",
                     IsHost = false
                 },
@@ -143,6 +146,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-92A4-EDC76A7D5DDE}"),
                     UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
                     UserName = "tom",
+                    DisplayName = "Tom",
                     Email = "tom@test.com",
                     IsHost = true
                 },
@@ -152,6 +156,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-92A4-EDC76A7D5DDE}"),
                     UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
                     UserName = "jane",
+                    DisplayName = "Jane",
                     Email = "jane@test.com",
                     IsHost = false
                 },
@@ -161,6 +166,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C5-92A4-EDC76A7C5DDE}"),
                     UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
                     UserName = "bob",
+                    DisplayName = "Bob",
                     Email = "bob@test.com",
                     IsHost = true
                 },
@@ -170,6 +176,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C5-92A4-EDC76A7C5DDE}"),
                     UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
                     UserName = "tom",
+                    DisplayName = "Tom",
                     Email = "tom@test.com",
                     IsHost = false
                 },
@@ -179,6 +186,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C7-92A4-EDC76A7C5DDE}"),
                     UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
                     UserName = "jane",
+                    DisplayName = "Jane",
                     Email = "jane@test.com",
                     IsHost = true
                 },
@@ -188,6 +196,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C7-92A4-EDC76A7C5DDE}"),
                     UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
                     UserName = "bob",
+                    DisplayName = "Bob",
                     Email = "bob@test.com",
                     IsHost = false
                 },
@@ -197,6 +206,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-42A4-EDC76A7C5DDE}"),
                     UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
                     UserName = "jane",
+                    DisplayName = "Jane",
                     Email = "jane@test.com",
                     IsHost = true
                 },
@@ -206,6 +216,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-46C1-92A4-EDC76A7C5DDE}"),
                     UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
                     UserName = "bob",
+                    DisplayName = "Bob",
                     Email = "bob@test.com",
                     IsHost = true
                 },
@@ -215,6 +226,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-46C1-92A4-EDC76A7C5DDE}"),
                     UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
                     UserName = "jane",
+                    DisplayName = "Jane",
                     Email = "jane@test.com",
                     IsHost = false
                 },
@@ -224,6 +236,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2E-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
                     UserName = "tom",
+                    DisplayName = "Tom",
                     Email = "tom@test.com",
                     IsHost = true
                 },
@@ -233,6 +246,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2E-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
                     UserName = "jane",
+                    DisplayName = "Jane",
                     Email = "jane@test.com",
                     IsHost = false
                 },
@@ -242,6 +256,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0768D2F-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
                     UserName = "bob",
+                    DisplayName = "Bob",
                     Email = "bob@test.com",
                     IsHost = true
                 },
@@ -251,6 +266,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0768D2F-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
                     UserName = "tom",
+                    DisplayName = "Tom",
                     Email = "tom@test.com",
                     IsHost = false
                 },
@@ -260,6 +276,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-92E4-EDC76A7C5DDE}"),
                     UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
                     UserName = "tom",
+                    DisplayName = "Tom",
                     Email = "tom@test.com",
                     IsHost = true
                 },
@@ -269,6 +286,7 @@ namespace EventsApp.Persistence
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-92E4-EDC76A7C5DDE}"),
                     UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
                     UserName = "jane",
+                    DisplayName = "Jane",
                     Email = "jane@test.com",
                     IsHost = false
                 }
