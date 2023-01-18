@@ -1,4 +1,3 @@
-using EventsApp.Api.Services.Photos;
 using EventsApp.Application.Contracts.Infrastructure.Security;
 using EventsApp.Application.Contracts.Infrastructure.Services.Photos;
 using EventsApp.Infrastructure.Security;
@@ -26,7 +25,6 @@ namespace EventsApp.Infrastructure
                 });
             });
             services.AddTransient<IAuthorizationHandler, IsHostRequirementHandler>();
-            // services.AddScoped<IFormFileProxy, FormFileProxy>();
             services.AddScoped<IPhotoCloudStorageService, PhotoCloudStorageService>();
             services.Configure<CloudinarySettings>(configuration.GetSection("Cloudinary"));
 

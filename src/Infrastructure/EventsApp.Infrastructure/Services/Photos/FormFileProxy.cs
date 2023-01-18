@@ -1,7 +1,7 @@
 using EventsApp.Application.Contracts.Infrastructure.Services.Photos;
 using Microsoft.AspNetCore.Http;
 
-namespace EventsApp.Api.Services.Photos
+namespace EventsApp.Infrastructure.Services.Photos
 {
     public class FormFileProxy : IFormFileProxy
     {

@@ -1,6 +1,6 @@
-using EventsApp.Api.Services.Photos;
 using EventsApp.Application.Features.Photos.Commands.CreatePhotoCommand;
 using EventsApp.Application.Features.Photos.Commands.DeletePhotoCommand;
+using EventsApp.Infrastructure.Services.Photos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
