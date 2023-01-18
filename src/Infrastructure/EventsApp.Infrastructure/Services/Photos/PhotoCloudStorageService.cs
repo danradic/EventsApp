@@ -30,30 +30,28 @@ namespace EventsApp.Infrastructure.Services.Photos
 
         public async Task<PhotoUploadResult> UploadPhoto(IFormFileProxy file)
         {
-            if(file.Length > 0)
+            if (file.Length <= 0) return null;
+
+            await using var stream = file.OpenReadStream();
+            
+            var uploadParams = new ImageUploadParams
             {
-                await using var stream = file.OpenReadStream();
-                var uploadParams = new ImageUploadParams
-                {
-                    File = new FileDescription(file.FileName, stream),
-                    Transformation = new Transformation().Height(500).Width(500).Crop("fill")
-                };
+                File = new FileDescription(file.FileName, stream),
+                Transformation = new Transformation().Height(500).Width(500).Crop("fill")
+            };
 
-                var uploadResult = await _cloudinary.UploadAsync(uploadParams);
+            var uploadResult = await _cloudinary.UploadAsync(uploadParams);
 
-                if(uploadResult.Error != null)
-                {
-                    throw new Exception(uploadResult.Error.Message);
-                }
-
-                return new PhotoUploadResult
-                {
-                    PublicId = uploadResult.PublicId,
-                    Url = uploadResult.SecureUrl.ToString()
-                };
+            if (uploadResult.Error != null)
+            {
+                throw new Exception(uploadResult.Error.Message);
             }
 
-            return null;
+            return new PhotoUploadResult
+            {
+                PublicId = uploadResult.PublicId,
+                Url = uploadResult.SecureUrl.ToString()
+            };
         }
     }
 }
