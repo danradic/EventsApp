@@ -1,3 +1,5 @@
+using EventsApp.Domain.Entities;
+
 namespace EventsApp.Application.Models
 {
     public class User
@@ -8,5 +10,6 @@ namespace EventsApp.Application.Models
         public string Email { get; set; }
         public string Bio { get; set; }
         public string Image { get; set; }
+        public ICollection<Photo> Photos { get; set; }
     }
 }

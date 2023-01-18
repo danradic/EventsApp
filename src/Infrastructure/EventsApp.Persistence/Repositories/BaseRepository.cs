@@ -23,7 +23,7 @@ namespace EventsApp.Persistence.Repositories
             return await _dbContext.SaveChangesAsync();
         }
 
-        public async Task<T> GetByIdAsync(Guid id)
+        public async Task<T> GetByIdAsync(params object[] id)
         {
             return await _dbContext.Set<T>().FindAsync(id);
         }

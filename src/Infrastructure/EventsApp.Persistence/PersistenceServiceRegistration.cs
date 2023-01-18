@@ -15,6 +15,7 @@ namespace EventsApp.Persistence
 
             services.AddScoped(typeof(IRepositoryAsync<>), typeof(BaseRepository<>));
             services.AddScoped<IActivityRepository, ActivityRepository>();
+            services.AddScoped<IPhotoRepository, PhotoRepository>();
 
             return services; 
         }

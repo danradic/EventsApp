@@ -6,6 +6,7 @@ using EventsApp.Application.Responses;
 using EventsApp.Identity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventsApp.Infrastructure.Security
 {
@@ -22,7 +23,9 @@ namespace EventsApp.Infrastructure.Security
         public async Task<Result<User>> GetCurrentUser()
         {
             var claimsPrincipal = _httpContextAccessor.HttpContext?.User;
-            var appUser = await _userManager.FindByEmailAsync(claimsPrincipal.FindFirstValue(ClaimTypes.Email));
+            
+            var appUser = await _userManager.Users
+                .FirstOrDefaultAsync(x => x.Id == claimsPrincipal.FindFirstValue("uid"));
 
             if (appUser == null)
                 return Result<User>.Failure(errorType: ErrorType.NotFound, message: "User not found.");
@@ -31,8 +34,10 @@ namespace EventsApp.Infrastructure.Security
             {
                 UserId = appUser.Id,
                 DisplayName = appUser.DisplayName,
+                Email = appUser.Email,
                 Image = null,
-                UserName = appUser.UserName
+                UserName = appUser.UserName,
+                Bio = appUser.Bio
             };
 
             return Result<User>.Success(user);

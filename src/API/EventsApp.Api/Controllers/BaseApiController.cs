@@ -31,6 +31,8 @@ namespace EventsApp.Api.Controllers
                     return BadRequest(problemDetails);
                 case ErrorType.NotFound:
                     return NotFound(problemDetails);
+                case ErrorType.Failure:
+                    return Problem(statusCode: 500, title: problemDetails.Title);
                 case ErrorType.Unauthorized:
                     return Unauthorized(problemDetails);
                 case ErrorType.Registration:
