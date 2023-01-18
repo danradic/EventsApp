@@ -22,6 +22,9 @@ namespace EventsApp.Application.Profiles
                 .ForMember(d => d.HostUsername, o => o.MapFrom(s => s.Attendees
                     .FirstOrDefault(x => x.IsHost).UserName));
                     
+            CreateMap<User, User>()
+                .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos.FirstOrDefault(x => x.IsMain).Url));
+
             CreateMap<ActivityAttendee, User>()
                 .ForMember(d => d.UserId, o => o.MapFrom(s => s.UserId))
                 .ForMember(d => d.DisplayName, o => o.MapFrom(s => s.DisplayName))
@@ -29,6 +32,8 @@ namespace EventsApp.Application.Profiles
                 .ForMember(d => d.Email, o => o.MapFrom(s => s.Email))
                 .ForMember(d => d.Bio, o => o.MapFrom(s => s.Bio))
                 .ForMember(d => d.Image, o => o.MapFrom(s => s.Image));
+
+            
 
             CreateMap<Activity, CreateActivityCommand>().ReverseMap();
             CreateMap<Activity, UpdateActivityCommand>().ReverseMap();

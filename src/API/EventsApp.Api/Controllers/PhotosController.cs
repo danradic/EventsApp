@@ -1,5 +1,6 @@
 using EventsApp.Application.Features.Photos.Commands.CreatePhotoCommand;
 using EventsApp.Application.Features.Photos.Commands.DeletePhotoCommand;
+using EventsApp.Application.Features.Photos.Commands.SetMainPhotoCommand;
 using EventsApp.Infrastructure.Services.Photos;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -26,6 +27,12 @@ namespace EventsApp.Api.Controllers
         public async Task<IActionResult> Delete(string id)
         {
             return HandleResult(await _mediator.Send(new DeletePhotoCommand { PhotoId = id }));
+        }
+
+        [HttpPost("{id}/setMain")]
+        public async Task<IActionResult> SetMain(string id)
+        {
+            return HandleResult(await _mediator.Send(new SetMainPhotoCommand { PhotoId = id }));
         }
     }
 }

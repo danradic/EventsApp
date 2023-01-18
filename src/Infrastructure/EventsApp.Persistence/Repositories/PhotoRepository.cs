@@ -1,5 +1,6 @@
 using EventsApp.Application.Contracts.Persistence;
 using EventsApp.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace EventsApp.Persistence.Repositories
 {
@@ -9,11 +10,32 @@ namespace EventsApp.Persistence.Repositories
         {
         }
 
-        public Task<List<Photo>> GetPhotosByUserId(string userId)
+        public async Task<List<Photo>> GetPhotosByUserId(string userId)
         {
-            var photos = _dbContext.Photos.Where(a => a.ApplicationUserId == userId).ToList();
+            return await _dbContext.Photos.Where(a => a.ApplicationUserId == userId).ToListAsync();
+        }
 
-            return Task.FromResult(photos);
+        public async Task<Photo> GetMainPhoto(string userId)
+        {
+            return await _dbContext.Photos.FirstOrDefaultAsync(a => a.ApplicationUserId == userId && a.IsMain);
+        }
+
+        public async Task<int> SetMainPhoto(string userId, string photoId)
+        {
+            var photoToSetAsMain = _dbContext.Photos.FirstOrDefault(a => a.ApplicationUserId == userId && a.Id == photoId);
+            
+            if(photoToSetAsMain == null) return 0;
+
+            photoToSetAsMain.IsMain = true;
+
+            var allOtherPhotos = await _dbContext.Photos.Where(a => a.ApplicationUserId == userId && a.Id != photoId).ToListAsync();
+
+            foreach (var photo in allOtherPhotos)
+            {
+                photo.IsMain = false;
+            }
+
+            return await _dbContext.SaveChangesAsync();
         }
     }
 }
