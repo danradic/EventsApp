@@ -111,7 +111,7 @@ namespace EventsApp.Persistence
 
             var jane = new User 
             {
-                UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
+                UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                 UserName = "jane",
                 DisplayName = "Jane",
                 Email = "jane@test.com",
@@ -119,7 +119,7 @@ namespace EventsApp.Persistence
             };
             var bob = new User 
             { 
-                UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
+                UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                 UserName = "bob",
                 DisplayName = "Bob",
                 Email = "bob@test.com",
@@ -127,7 +127,7 @@ namespace EventsApp.Persistence
             };
             var tom = new User 
             {
-                UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
+                UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                 UserName = "tom",
                 DisplayName = "Tom",
                 Email = "tom@test.com",
@@ -138,7 +138,7 @@ namespace EventsApp.Persistence
             {
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{8bd114c1-cf96-430a-9624-cb9df7b3b8d4}"),
+                    ActivityAttendeeId = Guid.Parse("{c5b2be3b-627e-47cd-b893-18de572aaa71}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-92A4-EDC76B7C5DDE}"),
                     UserId = bob.UserId,
                     UserName = bob.UserName,
@@ -149,7 +149,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{5c757487-a4d5-4207-b9b6-4641cde9737a}"),
+                    ActivityAttendeeId = Guid.Parse("{90c71ad5-cc49-4b3a-bf58-28c7e776d61f}"),
                     ActivityId = Guid.Parse("{B0708D2F-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = bob.UserId,
                     UserName = bob.UserName,
@@ -160,7 +160,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{553a08fd-b8f6-4268-885d-68108a9c29d8}"),
+                    ActivityAttendeeId = Guid.Parse("{fa64ad37-8e1b-4fc5-9ee3-ad69c8cdf798}"),
                     ActivityId = Guid.Parse("{B0708D2F-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = jane.UserId,
                     UserName = jane.UserName,
@@ -171,7 +171,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{9db3248d-5d20-4474-b634-63b1d8cb97d8}"),
+                    ActivityAttendeeId = Guid.Parse("{23183bdc-a1db-45db-824f-179cf8a8c331}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-92A4-EDC76A7D5DDE}"),
                     UserId = tom.UserId,
                     UserName = tom.UserName,
@@ -182,7 +182,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{41232c7a-1714-4025-bd01-2de96444c18f}"),
+                    ActivityAttendeeId = Guid.Parse("{87a262c6-c597-4c2d-97fe-732a2737e406}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-92A4-EDC76A7D5DDE}"),
                     UserId = jane.UserId,
                     UserName = jane.UserName,
@@ -193,7 +193,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{41fddd3c-8811-4048-aa99-de65e85053b5}"),
+                    ActivityAttendeeId = Guid.Parse("{ee8f3cfc-2ee1-40a0-824e-30c89a6fde6c}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C5-92A4-EDC76A7C5DDE}"),
                     UserId = bob.UserId,
                     UserName = bob.UserName,
@@ -204,7 +204,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{bee9b166-1f71-46e2-86aa-1f4bdb9932c0}"),
+                    ActivityAttendeeId = Guid.Parse("{525b8837-3935-4900-8aab-09f5dce68b4a}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C5-92A4-EDC76A7C5DDE}"),
                     UserId = tom.UserId,
                     UserName = tom.UserName,
@@ -215,7 +215,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{d1760bb5-b9e8-4dea-9550-7c59084b3874}"),
+                    ActivityAttendeeId = Guid.Parse("{4ebe321f-f48b-4574-9098-1453fdde0331}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C7-92A4-EDC76A7C5DDE}"),
                     UserId = jane.UserId,
                     UserName = jane.UserName,
@@ -226,7 +226,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{13665690-c91a-4382-8615-863dc196a256}"),
+                    ActivityAttendeeId = Guid.Parse("{16c4764a-a85c-4d31-98e7-b22a83915cff}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C7-92A4-EDC76A7C5DDE}"),
                     UserId = bob.UserId,
                     UserName = bob.UserName,
@@ -237,7 +237,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{70282896-a9a6-4a02-8963-d432ce9d744f}"),
+                    ActivityAttendeeId = Guid.Parse("{d0d1684b-861d-4700-adf1-ec457b50d7e6}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-42A4-EDC76A7C5DDE}"),
                     UserId = jane.UserId,
                     UserName = jane.UserName,
@@ -248,7 +248,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{107a0dcf-03ca-4478-be12-e22a83cfde70}"),
+                    ActivityAttendeeId = Guid.Parse("{bdc6adab-a35a-4a3a-bc4b-63482e724f99}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-46C1-92A4-EDC76A7C5DDE}"),
                     UserId = bob.UserId,
                     UserName = bob.UserName,
@@ -259,7 +259,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{53f666e7-f71c-4db7-b42f-0b7ec5550c1a}"),
+                    ActivityAttendeeId = Guid.Parse("{f185ce01-3ba6-455a-b5c7-3dcb7b08fcad}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-46C1-92A4-EDC76A7C5DDE}"),
                     UserId = jane.UserId,
                     UserName = jane.UserName,
@@ -270,7 +270,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{f6d49e42-19bf-419c-a675-f4fd0d1885bc}"),
+                    ActivityAttendeeId = Guid.Parse("{3ab3d0ca-bb82-4c17-ae50-2e5d782e05fd}"),
                     ActivityId = Guid.Parse("{B0788D2E-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = tom.UserId,
                     UserName = tom.UserName,
@@ -281,7 +281,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{3601016a-6613-42ac-8713-0aa4153c90b8}"),
+                    ActivityAttendeeId = Guid.Parse("{7f876625-4407-4439-916a-203bb144e5a3}"),
                     ActivityId = Guid.Parse("{B0788D2E-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = jane.UserId,
                     UserName = jane.UserName,
@@ -292,7 +292,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{8d7c889c-8efd-4777-abd0-3abad89c40c2}"),
+                    ActivityAttendeeId = Guid.Parse("{30156295-b85c-429f-8924-f019a37db3d3}"),
                     ActivityId = Guid.Parse("{B0768D2F-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = bob.UserId,
                     UserName = bob.UserName,
@@ -303,7 +303,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{72751074-d753-4e58-9c78-89e764cbdce4}"),
+                    ActivityAttendeeId = Guid.Parse("{b9d2ed76-e6c1-4d56-80e4-95e055f02f49}"),
                     ActivityId = Guid.Parse("{B0768D2F-8003-43C1-92A4-EDC76A7C5DDE}"),
                     UserId = tom.UserId,
                     UserName = tom.UserName,
@@ -314,7 +314,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{7afcbc1c-2c98-4b17-be34-3d30c2ff646c}"),
+                    ActivityAttendeeId = Guid.Parse("{38b42910-ed98-424e-97ce-2887ae1ef97d}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-92E4-EDC76A7C5DDE}"),
                     UserId = tom.UserId,
                     UserName = tom.UserName,
@@ -325,7 +325,7 @@ namespace EventsApp.Persistence
                 },
                 new ActivityAttendee
                 {
-                    ActivityAttendeeId = Guid.Parse("{3f843a09-85f5-4658-b36c-2da9b463d0d3}"),
+                    ActivityAttendeeId = Guid.Parse("{6137ddf4-523f-4392-a9cd-d947ac6cdf5a}"),
                     ActivityId = Guid.Parse("{B0788D2F-8003-43C1-92E4-EDC76A7C5DDE}"),
                     UserId = jane.UserId,
                     UserName = jane.UserName,

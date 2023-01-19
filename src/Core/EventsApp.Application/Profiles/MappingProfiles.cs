@@ -30,8 +30,6 @@ namespace EventsApp.Application.Profiles
                 .ForMember(d => d.Bio, o => o.MapFrom(s => s.Bio))
                 .ForMember(d => d.Image, o => o.MapFrom(s => s.Image));
 
-            
-
             CreateMap<Activity, CreateActivityCommand>().ReverseMap();
             CreateMap<Activity, UpdateActivityCommand>().ReverseMap();
             CreateMap<Activity, ActivityViewModel>().ReverseMap();

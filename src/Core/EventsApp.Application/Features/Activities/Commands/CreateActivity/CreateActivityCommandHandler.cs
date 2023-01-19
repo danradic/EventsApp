@@ -13,11 +13,18 @@ namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
         private readonly IActivityRepository _activityRepository;
         private readonly IMapper _mapper;
         private readonly IUserAccessor _userAccessor;
-        public CreateActivityCommandHandler(IActivityRepository activityRepository, IMapper mapper, IUserAccessor userAccessor)
+        private IPhotoRepository _photoRepository;
+
+        public CreateActivityCommandHandler(
+            IActivityRepository activityRepository, 
+            IMapper mapper, 
+            IUserAccessor userAccessor,
+            IPhotoRepository photoRepository)
         {
             _userAccessor = userAccessor;
             _mapper = mapper;
             _activityRepository = activityRepository;
+            _photoRepository = photoRepository;
         }
 
         public async Task<Result<ActivityViewModel>> Handle(CreateActivityCommand request, CancellationToken cancellationToken)
@@ -37,6 +44,9 @@ namespace EventsApp.Application.Features.Activities.Commands.CreateActivity
                 return Result<ActivityViewModel>.Failure(errorType: currentUserResult.Result.ErrorType, message: currentUserResult.Result.Message);
 
             var currentUser = currentUserResult.Result.Value;
+
+            var currentUserMainPhoto = await _photoRepository.GetMainPhoto(currentUser.UserId);
+            if(currentUserMainPhoto != null) currentUser.Image = currentUserMainPhoto.Url;
 
             var activity = _mapper.Map<Activity>(request);
 

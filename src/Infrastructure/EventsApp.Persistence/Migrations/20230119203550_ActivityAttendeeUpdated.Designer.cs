@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventsApp.Persistence.Migrations
 {
     [DbContext(typeof(EventsAppDbContext))]
-    [Migration("20230117114301_UpdateSeedAttendeesAddBio")]
-    partial class UpdateSeedAttendeesAddBio
+    [Migration("20230119203550_ActivityAttendeeUpdated")]
+    partial class ActivityAttendeeUpdated
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,7 +62,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c1-92a4-edc76b7c5dde"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2022, 11, 17, 12, 43, 0, 832, DateTimeKind.Local).AddTicks(2672),
+                            Date = new DateTime(2022, 11, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1007),
                             Description = "Activity 2 months ago",
                             IsCancelled = false,
                             Title = "Past Activity 1",
@@ -73,7 +73,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0708d2f-8003-43c1-92a4-edc76a7c5dde"),
                             Category = "culture",
                             City = "Paris",
-                            Date = new DateTime(2022, 12, 17, 12, 43, 0, 832, DateTimeKind.Local).AddTicks(2763),
+                            Date = new DateTime(2022, 12, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1115),
                             Description = "Activity 1 month ago",
                             IsCancelled = false,
                             Title = "Past Activity 2",
@@ -84,7 +84,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c1-92a4-edc76a7d5dde"),
                             Category = "culture",
                             City = "London",
-                            Date = new DateTime(2023, 2, 17, 12, 43, 0, 832, DateTimeKind.Local).AddTicks(2778),
+                            Date = new DateTime(2023, 2, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1133),
                             Description = "Activity 1 month in future",
                             IsCancelled = false,
                             Title = "Future Activity 1",
@@ -95,7 +95,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c5-92a4-edc76a7c5dde"),
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2023, 3, 17, 12, 43, 0, 832, DateTimeKind.Local).AddTicks(2792),
+                            Date = new DateTime(2023, 3, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1149),
                             Description = "Activity 2 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 2",
@@ -106,7 +106,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c7-92a4-edc76a7c5dde"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 4, 17, 12, 43, 0, 832, DateTimeKind.Local).AddTicks(2806),
+                            Date = new DateTime(2023, 4, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1166),
                             Description = "Activity 3 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 3",
@@ -117,7 +117,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c1-42a4-edc76a7c5dde"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 5, 17, 12, 43, 0, 832, DateTimeKind.Local).AddTicks(2820),
+                            Date = new DateTime(2023, 5, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1188),
                             Description = "Activity 4 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 4",
@@ -128,7 +128,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-46c1-92a4-edc76a7c5dde"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 6, 17, 12, 43, 0, 832, DateTimeKind.Local).AddTicks(2833),
+                            Date = new DateTime(2023, 6, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1204),
                             Description = "Activity 5 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 5",
@@ -139,7 +139,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2e-8003-43c1-92a4-edc76a7c5dde"),
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2023, 7, 17, 12, 43, 0, 832, DateTimeKind.Local).AddTicks(2846),
+                            Date = new DateTime(2023, 7, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1283),
                             Description = "Activity 6 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 6",
@@ -150,7 +150,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0768d2f-8003-43c1-92a4-edc76a7c5dde"),
                             Category = "travel",
                             City = "London",
-                            Date = new DateTime(2023, 8, 17, 12, 43, 0, 832, DateTimeKind.Local).AddTicks(2859),
+                            Date = new DateTime(2023, 8, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1304),
                             Description = "Activity 2 months ago",
                             IsCancelled = false,
                             Title = "Future Activity 7",
@@ -161,7 +161,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c1-92e4-edc76a7c5dde"),
                             Category = "film",
                             City = "London",
-                            Date = new DateTime(2023, 9, 17, 12, 43, 0, 832, DateTimeKind.Local).AddTicks(2874),
+                            Date = new DateTime(2023, 9, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1322),
                             Description = "Activity 8 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 8",
@@ -208,202 +208,221 @@ namespace EventsApp.Persistence.Migrations
                     b.HasData(
                         new
                         {
-                            ActivityAttendeeId = new Guid("8bd114c1-cf96-430a-9624-cb9df7b3b8d4"),
+                            ActivityAttendeeId = new Guid("c5b2be3b-627e-47cd-b893-18de572aaa71"),
                             ActivityId = new Guid("b0788d2f-8003-43c1-92a4-edc76b7c5dde"),
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
                             IsHost = true,
-                            UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
+                            UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("5c757487-a4d5-4207-b9b6-4641cde9737a"),
+                            ActivityAttendeeId = new Guid("90c71ad5-cc49-4b3a-bf58-28c7e776d61f"),
                             ActivityId = new Guid("b0708d2f-8003-43c1-92a4-edc76a7c5dde"),
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
                             IsHost = true,
-                            UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
+                            UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("553a08fd-b8f6-4268-885d-68108a9c29d8"),
+                            ActivityAttendeeId = new Guid("fa64ad37-8e1b-4fc5-9ee3-ad69c8cdf798"),
                             ActivityId = new Guid("b0708d2f-8003-43c1-92a4-edc76a7c5dde"),
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
                             IsHost = false,
-                            UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
+                            UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("9db3248d-5d20-4474-b634-63b1d8cb97d8"),
+                            ActivityAttendeeId = new Guid("23183bdc-a1db-45db-824f-179cf8a8c331"),
                             ActivityId = new Guid("b0788d2f-8003-43c1-92a4-edc76a7d5dde"),
                             Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
                             DisplayName = "Tom",
                             Email = "tom@test.com",
                             IsHost = true,
-                            UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
+                            UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                             UserName = "tom"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("41232c7a-1714-4025-bd01-2de96444c18f"),
+                            ActivityAttendeeId = new Guid("87a262c6-c597-4c2d-97fe-732a2737e406"),
                             ActivityId = new Guid("b0788d2f-8003-43c1-92a4-edc76a7d5dde"),
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
                             IsHost = false,
-                            UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
+                            UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("41fddd3c-8811-4048-aa99-de65e85053b5"),
+                            ActivityAttendeeId = new Guid("ee8f3cfc-2ee1-40a0-824e-30c89a6fde6c"),
                             ActivityId = new Guid("b0788d2f-8003-43c5-92a4-edc76a7c5dde"),
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
                             IsHost = true,
-                            UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
+                            UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("bee9b166-1f71-46e2-86aa-1f4bdb9932c0"),
+                            ActivityAttendeeId = new Guid("525b8837-3935-4900-8aab-09f5dce68b4a"),
                             ActivityId = new Guid("b0788d2f-8003-43c5-92a4-edc76a7c5dde"),
                             Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
                             DisplayName = "Tom",
                             Email = "tom@test.com",
                             IsHost = false,
-                            UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
+                            UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                             UserName = "tom"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("d1760bb5-b9e8-4dea-9550-7c59084b3874"),
+                            ActivityAttendeeId = new Guid("4ebe321f-f48b-4574-9098-1453fdde0331"),
                             ActivityId = new Guid("b0788d2f-8003-43c7-92a4-edc76a7c5dde"),
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
                             IsHost = true,
-                            UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
+                            UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("13665690-c91a-4382-8615-863dc196a256"),
+                            ActivityAttendeeId = new Guid("16c4764a-a85c-4d31-98e7-b22a83915cff"),
                             ActivityId = new Guid("b0788d2f-8003-43c7-92a4-edc76a7c5dde"),
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
                             IsHost = false,
-                            UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
+                            UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("70282896-a9a6-4a02-8963-d432ce9d744f"),
+                            ActivityAttendeeId = new Guid("d0d1684b-861d-4700-adf1-ec457b50d7e6"),
                             ActivityId = new Guid("b0788d2f-8003-43c1-42a4-edc76a7c5dde"),
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
                             IsHost = true,
-                            UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
+                            UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("107a0dcf-03ca-4478-be12-e22a83cfde70"),
+                            ActivityAttendeeId = new Guid("bdc6adab-a35a-4a3a-bc4b-63482e724f99"),
                             ActivityId = new Guid("b0788d2f-8003-46c1-92a4-edc76a7c5dde"),
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
                             IsHost = true,
-                            UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
+                            UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("53f666e7-f71c-4db7-b42f-0b7ec5550c1a"),
+                            ActivityAttendeeId = new Guid("f185ce01-3ba6-455a-b5c7-3dcb7b08fcad"),
                             ActivityId = new Guid("b0788d2f-8003-46c1-92a4-edc76a7c5dde"),
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
                             IsHost = false,
-                            UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
+                            UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("f6d49e42-19bf-419c-a675-f4fd0d1885bc"),
+                            ActivityAttendeeId = new Guid("3ab3d0ca-bb82-4c17-ae50-2e5d782e05fd"),
                             ActivityId = new Guid("b0788d2e-8003-43c1-92a4-edc76a7c5dde"),
                             Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
                             DisplayName = "Tom",
                             Email = "tom@test.com",
                             IsHost = true,
-                            UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
+                            UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                             UserName = "tom"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("3601016a-6613-42ac-8713-0aa4153c90b8"),
+                            ActivityAttendeeId = new Guid("7f876625-4407-4439-916a-203bb144e5a3"),
                             ActivityId = new Guid("b0788d2e-8003-43c1-92a4-edc76a7c5dde"),
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
                             IsHost = false,
-                            UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
+                            UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("8d7c889c-8efd-4777-abd0-3abad89c40c2"),
+                            ActivityAttendeeId = new Guid("30156295-b85c-429f-8924-f019a37db3d3"),
                             ActivityId = new Guid("b0768d2f-8003-43c1-92a4-edc76a7c5dde"),
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
                             IsHost = true,
-                            UserId = "940a1b37-3131-49b7-beb9-f37be7e2b536",
+                            UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("72751074-d753-4e58-9c78-89e764cbdce4"),
+                            ActivityAttendeeId = new Guid("b9d2ed76-e6c1-4d56-80e4-95e055f02f49"),
                             ActivityId = new Guid("b0768d2f-8003-43c1-92a4-edc76a7c5dde"),
                             Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
                             DisplayName = "Tom",
                             Email = "tom@test.com",
                             IsHost = false,
-                            UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
+                            UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                             UserName = "tom"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("7afcbc1c-2c98-4b17-be34-3d30c2ff646c"),
+                            ActivityAttendeeId = new Guid("38b42910-ed98-424e-97ce-2887ae1ef97d"),
                             ActivityId = new Guid("b0788d2f-8003-43c1-92e4-edc76a7c5dde"),
                             Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
                             DisplayName = "Tom",
                             Email = "tom@test.com",
                             IsHost = true,
-                            UserId = "868bfa6f-2f65-4a89-8f24-7f0d4d897a0f",
+                            UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                             UserName = "tom"
                         },
                         new
                         {
-                            ActivityAttendeeId = new Guid("3f843a09-85f5-4658-b36c-2da9b463d0d3"),
+                            ActivityAttendeeId = new Guid("6137ddf4-523f-4392-a9cd-d947ac6cdf5a"),
                             ActivityId = new Guid("b0788d2f-8003-43c1-92e4-edc76a7c5dde"),
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
                             IsHost = false,
-                            UserId = "95036e9b-23d2-4f20-968b-85d5098d46d6",
+                            UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
                         });
+                });
+
+            modelBuilder.Entity("EventsApp.Domain.Entities.Photo", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("ApplicationUserId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsMain")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Url")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Photos");
                 });
 
             modelBuilder.Entity("EventsApp.Domain.Entities.ActivityAttendee", b =>
