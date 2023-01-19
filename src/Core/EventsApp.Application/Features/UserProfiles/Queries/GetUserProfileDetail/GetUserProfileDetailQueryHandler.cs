@@ -1,6 +1,5 @@
 using EventsApp.Application.Contracts.Infrastructure.Security;
 using EventsApp.Application.Contracts.Persistence;
-using EventsApp.Application.Errors;
 using EventsApp.Application.Models;
 using EventsApp.Application.Responses;
 using MediatR;
@@ -21,15 +20,18 @@ namespace EventsApp.Application.Features.UserProfiles.Queries.GetUserProfileDeta
 
         public async Task<Result<User>> Handle(GetUserProfileDetailQuery request, CancellationToken cancellationToken)
         {
-            var currentUserResult = _userAccessor.GetCurrentUser();
+            var userResult = _userAccessor.GetUser(request.UserId);
 
-            if(!currentUserResult.Result.IsSuccess)
-                return Result<User>.Failure(errorType: currentUserResult.Result.ErrorType, message: currentUserResult.Result.Message);
+            if(!userResult.Result.IsSuccess)
+                return Result<User>.Failure(errorType: userResult.Result.ErrorType, message: userResult.Result.Message);
 
-            var currentUser = currentUserResult.Result.Value;
-            currentUser.Photos = await _photoRepository.GetPhotosByUserId(currentUser.UserId);
+            var user = userResult.Result.Value;
+            user.Photos = await _photoRepository.GetPhotosByUserId(user.UserId);
 
-            return Result<User>.Success(currentUser);
+            if(user.Photos.Any(p => p.IsMain))
+                user.Image = user.Photos.FirstOrDefault(p => p.IsMain).Url;
+
+            return Result<User>.Success(user);
         }
     }
 }

@@ -30,7 +30,7 @@ namespace EventsApp.Application.Features.Photos.Commands.CreatePhotoCommand
         public async Task<Result<PhotoViewModel>> Handle(CreatePhotoCommand request, CancellationToken cancellationToken)
         {
 
-            var currentUserResult = _userAccessor.GetCurrentUser();
+            var currentUserResult = _userAccessor.GetUser();
 
             if (!currentUserResult.Result.IsSuccess)
                 return Result<PhotoViewModel>.Failure(errorType: currentUserResult.Result.ErrorType, message: currentUserResult.Result.Message);

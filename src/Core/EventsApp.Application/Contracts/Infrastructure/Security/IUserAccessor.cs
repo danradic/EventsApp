@@ -5,6 +5,6 @@ namespace EventsApp.Application.Contracts.Infrastructure.Security
 {
     public interface IUserAccessor
     {
-        Task<Result<User>> GetCurrentUser();
+        Task<Result<User>> GetUser(string userId = null);
     }
 }

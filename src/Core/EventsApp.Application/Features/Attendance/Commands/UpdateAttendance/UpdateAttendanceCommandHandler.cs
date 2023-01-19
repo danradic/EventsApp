@@ -24,7 +24,7 @@ namespace EventsApp.Application.Features.Attendance.Commands.UpdateAttendance
             if(activity == null)
                 return Result<Unit>.Failure(errorType:ErrorType.NotFound, message: $"Activity with id {request.Id} not found.");
 
-            var currentUserResult = await _userAccessor.GetCurrentUser();
+            var currentUserResult = await _userAccessor.GetUser();
 
             if(!currentUserResult.IsSuccess || currentUserResult.Value == null)
                 return Result<Unit>.Failure(errorType: ErrorType.NotFound, message: "Current user not found");

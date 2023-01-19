@@ -4,6 +4,7 @@ using EventsApp.Application.Errors;
 using EventsApp.Application.Models;
 using EventsApp.Application.Responses;
 using EventsApp.Identity.Models;
+using EventsApp.Identity.Profiles;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -14,33 +15,36 @@ namespace EventsApp.Infrastructure.Security
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<ApplicationUser> _userManager;
-        public UserAccessor(IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
+        
+        public UserAccessor(
+            IHttpContextAccessor httpContextAccessor, 
+            UserManager<ApplicationUser> userManager)
         {
             _userManager = userManager;
             _httpContextAccessor = httpContextAccessor;
         }
 
-        public async Task<Result<User>> GetCurrentUser()
+        public async Task<Result<User>> GetUser(string userId = null)
         {
-            var claimsPrincipal = _httpContextAccessor.HttpContext?.User;
-            
-            var appUser = await _userManager.Users
-                .FirstOrDefaultAsync(x => x.Id == claimsPrincipal.FindFirstValue("uid"));
+            ApplicationUser appUser = new();
+
+            bool getCurrentUser = userId == null;
+
+            if (getCurrentUser)
+            {
+                var claimsPrincipal = _httpContextAccessor.HttpContext?.User;
+                appUser = await _userManager.Users
+                    .FirstOrDefaultAsync(u => u.Id == claimsPrincipal.FindFirstValue("uid"));
+            }
+            else
+            {
+                appUser = await _userManager.Users.FirstOrDefaultAsync(u => u.Id == userId);
+            }
 
             if (appUser == null)
                 return Result<User>.Failure(errorType: ErrorType.NotFound, message: "User not found.");
 
-            var user = new User
-            {
-                UserId = appUser.Id,
-                DisplayName = appUser.DisplayName,
-                Email = appUser.Email,
-                Image = null,
-                UserName = appUser.UserName,
-                Bio = appUser.Bio
-            };
-
-            return Result<User>.Success(user);
+            return Result<User>.Success(Mappings.FromApplicationUser(appUser));
         }
     }
 }

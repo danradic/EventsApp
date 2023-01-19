@@ -21,9 +21,6 @@ namespace EventsApp.Application.Profiles
             CreateMap<Activity, ActivityDetailViewModel>()
                 .ForMember(d => d.HostUsername, o => o.MapFrom(s => s.Attendees
                     .FirstOrDefault(x => x.IsHost).UserName));
-                    
-            CreateMap<User, User>()
-                .ForMember(d => d.Image, o => o.MapFrom(s => s.Photos.FirstOrDefault(x => x.IsMain).Url));
 
             CreateMap<ActivityAttendee, User>()
                 .ForMember(d => d.UserId, o => o.MapFrom(s => s.UserId))

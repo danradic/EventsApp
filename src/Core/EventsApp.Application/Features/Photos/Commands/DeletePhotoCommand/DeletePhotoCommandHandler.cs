@@ -25,7 +25,7 @@ namespace EventsApp.Application.Features.Photos.Commands.DeletePhotoCommand
         }
         public async Task<Result<Unit>> Handle(DeletePhotoCommand request, CancellationToken cancellationToken)
         {
-            var currentUserResult = _userAccessor.GetCurrentUser();
+            var currentUserResult = _userAccessor.GetUser();
 
             if (!currentUserResult.Result.IsSuccess)
                 return Result<Unit>.Failure(errorType: currentUserResult.Result.ErrorType, message: currentUserResult.Result.Message);
