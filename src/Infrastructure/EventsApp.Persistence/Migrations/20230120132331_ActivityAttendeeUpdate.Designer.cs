@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EventsApp.Persistence.Migrations
 {
     [DbContext(typeof(EventsAppDbContext))]
-    [Migration("20230119203550_ActivityAttendeeUpdated")]
-    partial class ActivityAttendeeUpdated
+    [Migration("20230120132331_ActivityAttendeeUpdate")]
+    partial class ActivityAttendeeUpdate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -62,7 +62,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c1-92a4-edc76b7c5dde"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2022, 11, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1007),
+                            Date = new DateTime(2022, 11, 20, 14, 23, 30, 920, DateTimeKind.Local).AddTicks(8724),
                             Description = "Activity 2 months ago",
                             IsCancelled = false,
                             Title = "Past Activity 1",
@@ -73,7 +73,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0708d2f-8003-43c1-92a4-edc76a7c5dde"),
                             Category = "culture",
                             City = "Paris",
-                            Date = new DateTime(2022, 12, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1115),
+                            Date = new DateTime(2022, 12, 20, 14, 23, 30, 920, DateTimeKind.Local).AddTicks(8912),
                             Description = "Activity 1 month ago",
                             IsCancelled = false,
                             Title = "Past Activity 2",
@@ -84,7 +84,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c1-92a4-edc76a7d5dde"),
                             Category = "culture",
                             City = "London",
-                            Date = new DateTime(2023, 2, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1133),
+                            Date = new DateTime(2023, 2, 20, 14, 23, 30, 920, DateTimeKind.Local).AddTicks(8929),
                             Description = "Activity 1 month in future",
                             IsCancelled = false,
                             Title = "Future Activity 1",
@@ -95,7 +95,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c5-92a4-edc76a7c5dde"),
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2023, 3, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1149),
+                            Date = new DateTime(2023, 3, 20, 14, 23, 30, 920, DateTimeKind.Local).AddTicks(8946),
                             Description = "Activity 2 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 2",
@@ -106,7 +106,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c7-92a4-edc76a7c5dde"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 4, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1166),
+                            Date = new DateTime(2023, 4, 20, 14, 23, 30, 920, DateTimeKind.Local).AddTicks(8961),
                             Description = "Activity 3 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 3",
@@ -117,7 +117,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c1-42a4-edc76a7c5dde"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 5, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1188),
+                            Date = new DateTime(2023, 5, 20, 14, 23, 30, 920, DateTimeKind.Local).AddTicks(8979),
                             Description = "Activity 4 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 4",
@@ -128,7 +128,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-46c1-92a4-edc76a7c5dde"),
                             Category = "drinks",
                             City = "London",
-                            Date = new DateTime(2023, 6, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1204),
+                            Date = new DateTime(2023, 6, 20, 14, 23, 30, 920, DateTimeKind.Local).AddTicks(8994),
                             Description = "Activity 5 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 5",
@@ -139,7 +139,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2e-8003-43c1-92a4-edc76a7c5dde"),
                             Category = "music",
                             City = "London",
-                            Date = new DateTime(2023, 7, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1283),
+                            Date = new DateTime(2023, 7, 20, 14, 23, 30, 920, DateTimeKind.Local).AddTicks(9010),
                             Description = "Activity 6 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 6",
@@ -150,7 +150,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0768d2f-8003-43c1-92a4-edc76a7c5dde"),
                             Category = "travel",
                             City = "London",
-                            Date = new DateTime(2023, 8, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1304),
+                            Date = new DateTime(2023, 8, 20, 14, 23, 30, 920, DateTimeKind.Local).AddTicks(9025),
                             Description = "Activity 2 months ago",
                             IsCancelled = false,
                             Title = "Future Activity 7",
@@ -161,7 +161,7 @@ namespace EventsApp.Persistence.Migrations
                             Id = new Guid("b0788d2f-8003-43c1-92e4-edc76a7c5dde"),
                             Category = "film",
                             City = "London",
-                            Date = new DateTime(2023, 9, 19, 21, 35, 50, 634, DateTimeKind.Local).AddTicks(1322),
+                            Date = new DateTime(2023, 9, 20, 14, 23, 30, 920, DateTimeKind.Local).AddTicks(9043),
                             Description = "Activity 8 months in future",
                             IsCancelled = false,
                             Title = "Future Activity 8",
@@ -213,6 +213,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220245/dfeyqwume4of1fzeibj5.jpg",
                             IsHost = true,
                             UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
@@ -224,6 +225,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220245/dfeyqwume4of1fzeibj5.jpg",
                             IsHost = true,
                             UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
@@ -235,6 +237,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674160787/urvj1ohuxr9xukihu6c9.jpg",
                             IsHost = false,
                             UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
@@ -246,6 +249,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
                             DisplayName = "Tom",
                             Email = "tom@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220306/spkaxptndbgr6wvrk9dh.jpg",
                             IsHost = true,
                             UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                             UserName = "tom"
@@ -257,6 +261,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674160787/urvj1ohuxr9xukihu6c9.jpg",
                             IsHost = false,
                             UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
@@ -268,6 +273,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220245/dfeyqwume4of1fzeibj5.jpg",
                             IsHost = true,
                             UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
@@ -279,6 +285,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
                             DisplayName = "Tom",
                             Email = "tom@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220306/spkaxptndbgr6wvrk9dh.jpg",
                             IsHost = false,
                             UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                             UserName = "tom"
@@ -290,6 +297,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674160787/urvj1ohuxr9xukihu6c9.jpg",
                             IsHost = true,
                             UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
@@ -301,6 +309,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220245/dfeyqwume4of1fzeibj5.jpg",
                             IsHost = false,
                             UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
@@ -312,6 +321,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674160787/urvj1ohuxr9xukihu6c9.jpg",
                             IsHost = true,
                             UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
@@ -323,6 +333,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220245/dfeyqwume4of1fzeibj5.jpg",
                             IsHost = true,
                             UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
@@ -334,6 +345,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674160787/urvj1ohuxr9xukihu6c9.jpg",
                             IsHost = false,
                             UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
@@ -345,6 +357,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
                             DisplayName = "Tom",
                             Email = "tom@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220306/spkaxptndbgr6wvrk9dh.jpg",
                             IsHost = true,
                             UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                             UserName = "tom"
@@ -356,6 +369,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674160787/urvj1ohuxr9xukihu6c9.jpg",
                             IsHost = false,
                             UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"
@@ -367,6 +381,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
                             DisplayName = "Bob",
                             Email = "bob@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220245/dfeyqwume4of1fzeibj5.jpg",
                             IsHost = true,
                             UserId = "7a8a088d-a38e-4187-a3d8-4545ab080450",
                             UserName = "bob"
@@ -378,6 +393,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
                             DisplayName = "Tom",
                             Email = "tom@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220306/spkaxptndbgr6wvrk9dh.jpg",
                             IsHost = false,
                             UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                             UserName = "tom"
@@ -389,6 +405,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
                             DisplayName = "Tom",
                             Email = "tom@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220306/spkaxptndbgr6wvrk9dh.jpg",
                             IsHost = true,
                             UserId = "84b07d25-a856-466d-a3a8-4ca6df8630e3",
                             UserName = "tom"
@@ -400,6 +417,7 @@ namespace EventsApp.Persistence.Migrations
                             Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
                             DisplayName = "Jane",
                             Email = "jane@test.com",
+                            Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674160787/urvj1ohuxr9xukihu6c9.jpg",
                             IsHost = false,
                             UserId = "6df9eb93-33c0-42c0-a85d-cdd96ccd4899",
                             UserName = "jane"

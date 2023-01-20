@@ -7,5 +7,6 @@ namespace EventsApp.Application.Contracts.Persistence
         Task<bool> IsActivityTitleAndDateUnique(string title, DateTime date);
         Task<List<Activity>> GetActivitiesWithAttendees(bool includePassedActivites);
         Task<Activity> GetActivityDetailWithAttendees(Guid id);
+        Task<int> UpdateActivityAttendeeImage(string userId, string imageUrl);
     }
 }

@@ -115,7 +115,8 @@ namespace EventsApp.Persistence
                 UserName = "jane",
                 DisplayName = "Jane",
                 Email = "jane@test.com",
-                Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours."
+                Bio = "Jane is a woman of many talents, but most importantly, she has a great sense of humor. She's been known to turn a boring meeting into a comedy show and to make even the grimmest Monday morning bearable with her quick wit. When she's not cracking jokes, you can find her whipping up a storm in the kitchen, binge-watching her favorite shows, or planning her next adventure. Just don't ask her to pick a favorite ice cream flavor, she'll be there for hours.",
+                Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674160787/urvj1ohuxr9xukihu6c9.jpg"
             };
             var bob = new User 
             { 
@@ -123,7 +124,8 @@ namespace EventsApp.Persistence
                 UserName = "bob",
                 DisplayName = "Bob",
                 Email = "bob@test.com",
-                Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team."
+                Bio = "Bob is a hardworking individual with a passion for learning new things. He enjoys spending his free time exploring the outdoors and is an avid sports fan. Bob is also a dedicated family man who values spending time with his loved ones. He is a team player and is always willing to lend a helping hand to his colleagues. Bob's positive attitude and strong work ethic make him an asset to any team.",
+                Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220245/dfeyqwume4of1fzeibj5.jpg"
             };
             var tom = new User 
             {
@@ -131,7 +133,8 @@ namespace EventsApp.Persistence
                 UserName = "tom",
                 DisplayName = "Tom",
                 Email = "tom@test.com",
-                Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule."
+                Bio = "Tom is a businessman who always has his schedule planned out months in advance, but that doesn't mean he doesn't know how to have fun. When he's not closing deals, you can find him hitting the dance floor, trying new cocktails or planning his next vacation, where he'll probably plan his schedule for the next year. Just don't ask him to be spontaneous, it's not in his schedule.",
+                Image = "https://res.cloudinary.com/dialkfwlz/image/upload/v1674220306/spkaxptndbgr6wvrk9dh.jpg"
             };
 
             var attendees = new List<ActivityAttendee>
@@ -145,6 +148,7 @@ namespace EventsApp.Persistence
                     DisplayName = bob.DisplayName,
                     Email = bob.Email,
                     Bio = bob.Bio,
+                    Image = bob.Image,
                     IsHost = true
                 },
                 new ActivityAttendee
@@ -156,6 +160,7 @@ namespace EventsApp.Persistence
                     DisplayName = bob.DisplayName,
                     Email = bob.Email,
                     Bio = bob.Bio,
+                    Image = bob.Image,
                     IsHost = true
                 },
                 new ActivityAttendee
@@ -167,6 +172,7 @@ namespace EventsApp.Persistence
                     DisplayName = jane.DisplayName,
                     Email = jane.Email,
                     Bio = jane.Bio,
+                    Image = jane.Image,
                     IsHost = false
                 },
                 new ActivityAttendee
@@ -178,6 +184,7 @@ namespace EventsApp.Persistence
                     DisplayName = tom.DisplayName,
                     Email = tom.Email,
                     Bio = tom.Bio,
+                    Image = tom.Image,
                     IsHost = true
                 },
                 new ActivityAttendee
@@ -189,6 +196,7 @@ namespace EventsApp.Persistence
                     DisplayName = jane.DisplayName,
                     Email = jane.Email,
                     Bio = jane.Bio,
+                    Image = jane.Image,
                     IsHost = false
                 },
                 new ActivityAttendee
@@ -200,6 +208,7 @@ namespace EventsApp.Persistence
                     DisplayName = bob.DisplayName,
                     Email = bob.Email,
                     Bio = bob.Bio,
+                    Image = bob.Image,
                     IsHost = true
                 },
                 new ActivityAttendee
@@ -211,6 +220,7 @@ namespace EventsApp.Persistence
                     DisplayName = tom.DisplayName,
                     Email = tom.Email,
                     Bio = tom.Bio,
+                    Image = tom.Image,
                     IsHost = false
                 },
                 new ActivityAttendee
@@ -222,6 +232,7 @@ namespace EventsApp.Persistence
                     DisplayName = jane.DisplayName,
                     Email = jane.Email,
                     Bio = jane.Bio,
+                    Image = jane.Image,
                     IsHost = true
                 },
                 new ActivityAttendee
@@ -233,6 +244,7 @@ namespace EventsApp.Persistence
                     DisplayName = bob.DisplayName,
                     Email = bob.Email,
                     Bio = bob.Bio,
+                    Image = bob.Image,
                     IsHost = false
                 },
                 new ActivityAttendee
@@ -244,6 +256,7 @@ namespace EventsApp.Persistence
                     DisplayName = jane.DisplayName,
                     Email = jane.Email,
                     Bio = jane.Bio,
+                    Image = jane.Image,
                     IsHost = true
                 },
                 new ActivityAttendee
@@ -255,6 +268,7 @@ namespace EventsApp.Persistence
                     DisplayName = bob.DisplayName,
                     Email = bob.Email,
                     Bio = bob.Bio,
+                    Image = bob.Image,
                     IsHost = true
                 },
                 new ActivityAttendee
@@ -266,6 +280,7 @@ namespace EventsApp.Persistence
                     DisplayName = jane.DisplayName,
                     Email = jane.Email,
                     Bio = jane.Bio,
+                    Image = jane.Image,
                     IsHost = false
                 },
                 new ActivityAttendee
@@ -277,6 +292,7 @@ namespace EventsApp.Persistence
                     DisplayName = tom.DisplayName,
                     Email = tom.Email,
                     Bio = tom.Bio,
+                    Image = tom.Image,
                     IsHost = true
                 },
                 new ActivityAttendee
@@ -288,6 +304,7 @@ namespace EventsApp.Persistence
                     DisplayName = jane.DisplayName,
                     Email = jane.Email,
                     Bio = jane.Bio,
+                    Image = jane.Image,
                     IsHost = false
                 },
                 new ActivityAttendee
@@ -299,6 +316,7 @@ namespace EventsApp.Persistence
                     DisplayName = bob.DisplayName,
                     Email = bob.Email,
                     Bio = bob.Bio,
+                    Image = bob.Image,
                     IsHost = true
                 },
                 new ActivityAttendee
@@ -310,6 +328,7 @@ namespace EventsApp.Persistence
                     DisplayName = tom.DisplayName,
                     Email = tom.Email,
                     Bio = tom.Bio,
+                    Image = tom.Image,
                     IsHost = false
                 },
                 new ActivityAttendee
@@ -321,6 +340,7 @@ namespace EventsApp.Persistence
                     DisplayName = tom.DisplayName,
                     Email = tom.Email,
                     Bio = tom.Bio,
+                    Image = tom.Image,
                     IsHost = true
                 },
                 new ActivityAttendee
@@ -332,6 +352,7 @@ namespace EventsApp.Persistence
                     DisplayName = jane.DisplayName,
                     Email = jane.Email,
                     Bio = jane.Bio,
+                    Image = jane.Image,
                     IsHost = false
                 }
             };

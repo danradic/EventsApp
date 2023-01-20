@@ -20,11 +20,11 @@ namespace EventsApp.Persistence.Repositories
             return await _dbContext.Photos.FirstOrDefaultAsync(a => a.ApplicationUserId == userId && a.IsMain);
         }
 
-        public async Task<int> SetMainPhoto(string userId, string photoId)
+        public async Task<Photo> SetMainPhoto(string userId, string photoId)
         {
             var photoToSetAsMain = _dbContext.Photos.FirstOrDefault(a => a.ApplicationUserId == userId && a.Id == photoId);
             
-            if(photoToSetAsMain == null) return 0;
+            if(photoToSetAsMain == null) return null;
 
             photoToSetAsMain.IsMain = true;
 
@@ -35,7 +35,9 @@ namespace EventsApp.Persistence.Repositories
                 photo.IsMain = false;
             }
 
-            return await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
+
+            return photoToSetAsMain;
         }
     }
 }

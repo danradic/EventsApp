@@ -10,13 +10,16 @@ namespace EventsApp.Application.Features.Photos.Commands.SetMainPhotoCommand
     {
         private readonly IUserAccessor _userAccessor;
         private readonly IPhotoRepository _photoRepository;
+        private readonly IActivityRepository _activityRepository;
 
         public SetMainPhotoCommandHandler(
             IUserAccessor userAccessor,
-            IPhotoRepository photoRepository)
+            IPhotoRepository photoRepository, 
+            IActivityRepository activityRepository)
         {
             _userAccessor = userAccessor;
             _photoRepository = photoRepository;
+            _activityRepository = activityRepository;
         }
 
         public async Task<Result<Unit>> Handle(SetMainPhotoCommand request, CancellationToken cancellationToken)
@@ -28,11 +31,13 @@ namespace EventsApp.Application.Features.Photos.Commands.SetMainPhotoCommand
 
             var currentUser = currentUserResult.Result.Value;
 
-            var setMainPhotoResult = await _photoRepository.SetMainPhoto(currentUser.UserId, request.PhotoId) > 0;
+            var mainPhoto = await _photoRepository.SetMainPhoto(currentUser.UserId, request.PhotoId);
 
-            if (!setMainPhotoResult)
+            if (mainPhoto == null)
                 return Result<Unit>.Failure(errorType: ErrorType.Failure, message: "Problem setting main photo.");
 
+            await _activityRepository.UpdateActivityAttendeeImage(currentUser.UserId, mainPhoto.Url);
+            
             return Result<Unit>.Success(Unit.Value);
         }
     }

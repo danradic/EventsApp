@@ -36,5 +36,21 @@ namespace EventsApp.Persistence.Repositories
             return Task.FromResult(activityDetail);
         }
 
+        public async Task<int> UpdateActivityAttendeeImage(string userId, string imageUrl)
+        {
+            var activities = _dbContext.Activities.Include(x => x.Attendees.Where(a => a.UserId == userId));
+
+            if(activities == null) return 0;
+
+            foreach (var activity in activities)
+            {
+                foreach (var attendee in activity.Attendees)
+                {
+                    attendee.Image = imageUrl;
+                }
+            }
+
+            return await _dbContext.SaveChangesAsync();
+        }
     }
 }

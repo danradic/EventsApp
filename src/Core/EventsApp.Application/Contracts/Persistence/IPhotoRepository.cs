@@ -6,6 +6,6 @@ namespace EventsApp.Application.Contracts.Persistence
     {
         Task<List<Photo>> GetPhotosByUserId(string userId);
         Task<Photo> GetMainPhoto(string userId);
-        Task<int> SetMainPhoto(string userId, string photoId);
+        Task<Photo> SetMainPhoto(string userId, string photoId);
     }
 }
