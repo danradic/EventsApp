@@ -11,10 +11,16 @@ namespace EventsApp.Application.Features.Attendance.Commands.UpdateAttendance
     {
         private readonly IUserAccessor _userAccessor;
         private readonly IActivityRepository _activityRepository;
-        public UpdateAttendanceCommandHandler(IActivityRepository activityRepository, IUserAccessor userAccessor)
+        private readonly IPhotoRepository _photoRepository;
+
+        public UpdateAttendanceCommandHandler(
+            IActivityRepository activityRepository,
+            IUserAccessor userAccessor,
+            IPhotoRepository photoRepository)
         {
             _activityRepository = activityRepository;
             _userAccessor = userAccessor;
+            _photoRepository = photoRepository;
         }
 
         public async Task<Result<Unit>> Handle(UpdateAttendanceCommand request, CancellationToken cancellationToken)
@@ -29,11 +35,15 @@ namespace EventsApp.Application.Features.Attendance.Commands.UpdateAttendance
             if(!currentUserResult.IsSuccess || currentUserResult.Value == null)
                 return Result<Unit>.Failure(errorType: ErrorType.NotFound, message: "Current user not found");
 
-            var currentUsername = currentUserResult.Value.UserName;
+            var currentUser = currentUserResult.Value;
+
+            var currentUserMainPhoto = await _photoRepository.GetMainPhoto(currentUser.UserId);
+            if(currentUserMainPhoto != null) currentUser.Image = currentUserMainPhoto.Url;
+
             var hostUsername = activity.Attendees.FirstOrDefault(x => x.IsHost)?.UserName;
-            var activityAttendee = activity.Attendees.FirstOrDefault(x => x.UserName == currentUsername);
+            var activityAttendee = activity.Attendees.FirstOrDefault(x => x.UserName == currentUser.UserName);
             bool isCurrentUserAnAttendee = activityAttendee != null;
-            bool isCurrentUserHost = isCurrentUserAnAttendee && currentUsername == hostUsername;
+            bool isCurrentUserHost = isCurrentUserAnAttendee && currentUser.UserName == hostUsername;
 
             if(isCurrentUserHost) activity.IsCancelled = !activity.IsCancelled;
             if(!isCurrentUserHost) activity.Attendees.Remove(activityAttendee);
@@ -43,12 +53,12 @@ namespace EventsApp.Application.Features.Attendance.Commands.UpdateAttendance
                 activityAttendee = new ActivityAttendee 
                 {
                     Activity = activity,
-                    UserId = currentUserResult.Value.UserId,
-                    DisplayName = currentUserResult.Value.DisplayName,
-                    UserName = currentUserResult.Value.UserName,
-                    Email = currentUserResult.Value.Email,
-                    Bio = currentUserResult.Value.Bio,
-                    Image = currentUserResult.Value.Image,
+                    UserId = currentUser.UserId,
+                    DisplayName = currentUser.DisplayName,
+                    UserName = currentUser.UserName,
+                    Email = currentUser.Email,
+                    Bio = currentUser.Bio,
+                    Image = currentUser.Image,
                     IsHost = false
                 };
                 activity.Attendees.Add(activityAttendee);

@@ -92,7 +92,7 @@ const Account = {
 }
 
 const Profiles = {
-    get: (username: string) => requests.get<Profile>(`/profiles/${username}`),
+    get: (userId: string) => requests.get<Profile>(`/userprofiles/${userId}`),
     uploadPhoto: (file: any) => {
         let formData = new FormData();
         formData.append('File', file);

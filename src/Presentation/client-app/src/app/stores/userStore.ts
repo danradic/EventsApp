@@ -56,6 +56,17 @@ export default class UserStore {
         }
     }
 
+    setImageFromProfile = async () => {
+        try {
+            const profile = await apiClient.Profiles.get(this.user?.id!);
+            runInAction( () => {
+                if (this.user) this.user.image = profile.image;
+            });
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
     setImage = (image: string) => {
         if (this.user) this.user.image = image;
     }

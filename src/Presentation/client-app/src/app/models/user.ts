@@ -1,4 +1,5 @@
 export interface User {
+    id: string,
     userName: string;
     displayName: string;
     token: string;
@@ -11,4 +12,5 @@ export interface UserFormValues {
     password: string;
     displayName?: string;
     userName?: string;
+    id?: string
 }

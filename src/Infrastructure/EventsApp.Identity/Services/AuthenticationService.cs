@@ -173,6 +173,7 @@ namespace EventsApp.Identity.Services
 
             var user = new AuthenticationResponse
             {
+                Id = appUser.Id,
                 DisplayName = appUser.DisplayName,
                 Image = null,
                 Token = token,
