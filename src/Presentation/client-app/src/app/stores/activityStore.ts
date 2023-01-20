@@ -135,7 +135,6 @@ export default class ActivityStore {
 
     updateAttendeance = async () => {
         const user = store.userStore.user;
-        store.userStore.setImageFromProfile();
         this.loading = true;
         try {
             await apiClient.Activities.attend(this.selectedActivity!.id);
