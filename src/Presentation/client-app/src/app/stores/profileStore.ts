@@ -42,10 +42,10 @@ export default class ProfileStore {
         return false;
     }
 
-    loadProfile = async (username: string) => {
+    loadProfile = async (userid: string) => {
         this.loadingProfile = true;
         try {
-            const profile = await apiClient.Profiles.get(username);
+            const profile = await apiClient.Profiles.get(userid);
             runInAction(() => {
                 this.profile = profile;
                 this.loadingProfile = false;
