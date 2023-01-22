@@ -84,6 +84,7 @@ export default class ProfileStore {
         try {
             await apiClient.Profiles.setMainPhoto(photo.id);
             store.userStore.setImage(photo.url);
+            store.activityStore.updateAttendeeImage(store.userStore.user?.id!, photo.url);
             runInAction(() => {
                 if (this.profile && this.profile.photos) {
                     this.profile.photos.find(a => a.isMain)!.isMain = false;

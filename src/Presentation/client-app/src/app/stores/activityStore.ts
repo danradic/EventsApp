@@ -185,4 +185,15 @@ export default class ActivityStore {
             })
         })
     }
+
+    updateAttendeeImage = (userId: string, imageUrl: string) => {
+        this.activityRegistry.forEach(activity => {
+            activity.attendees.forEach((attendee: Profile) => {
+                if (attendee.userId === userId) {
+                    attendee.image = imageUrl;
+                    if (activity.host?.image) activity.host.image = imageUrl;
+                }
+            })
+        })
+    }
 }
