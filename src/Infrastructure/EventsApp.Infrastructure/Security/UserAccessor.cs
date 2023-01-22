@@ -46,5 +46,24 @@ namespace EventsApp.Infrastructure.Security
 
             return Result<User>.Success(Mappings.FromApplicationUser(appUser));
         }
+
+        public async Task<Result<User>> UpdateUser(User user)
+        {
+
+            var appUser =  await _userManager.FindByIdAsync(user.UserId);
+
+            if (appUser == null)
+                return Result<User>.Failure(errorType: ErrorType.NotFound, message: "User not found.");
+
+            appUser.DisplayName = user.DisplayName;
+            appUser.Bio = user.Bio;
+
+            var updateResult = await _userManager.UpdateAsync(appUser);
+
+            if (!updateResult.Succeeded)
+                return Result<User>.Failure(errorType: ErrorType.Failure, message: "Problem updating user.");
+
+            return Result<User>.Success(Mappings.FromApplicationUser(appUser));
+        }
     }
 }

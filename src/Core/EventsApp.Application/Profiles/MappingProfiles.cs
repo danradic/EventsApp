@@ -5,6 +5,7 @@ using EventsApp.Application.Features.Activities.Commands.UpdateActivity;
 using EventsApp.Application.Features.Activities.Queries.GetActivitiesList;
 using EventsApp.Application.Features.Activities.Queries.GetActivityDetail;
 using EventsApp.Application.Features.Photos.Commands.CreatePhotoCommand;
+using EventsApp.Application.Features.UserProfiles.Commands.UpdateUserProfile;
 using EventsApp.Application.Models;
 using EventsApp.Domain.Entities;
 using FluentValidation.Results;
@@ -29,6 +30,8 @@ namespace EventsApp.Application.Profiles
                 .ForMember(d => d.Email, o => o.MapFrom(s => s.Email))
                 .ForMember(d => d.Bio, o => o.MapFrom(s => s.Bio))
                 .ForMember(d => d.Image, o => o.MapFrom(s => s.Image));
+
+            CreateMap<User, UpdateUserProfileCommand>().ReverseMap();
 
             CreateMap<Activity, CreateActivityCommand>().ReverseMap();
             CreateMap<Activity, UpdateActivityCommand>().ReverseMap();

@@ -196,4 +196,16 @@ export default class ActivityStore {
             })
         })
     }
+
+    updateAttendeeProfile = (userId: string, displayName: string, bio: string) => {
+        this.activityRegistry.forEach(activity => {
+            activity.attendees.forEach((attendee: Profile) => {
+                if (attendee.userId === userId) {
+                    attendee.displayName = displayName;
+                    attendee.bio = bio;
+                    if (activity.host?.image) activity.host.displayName = displayName;
+                }
+            })
+        })
+    }
 }

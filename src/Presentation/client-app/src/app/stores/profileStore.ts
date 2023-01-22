@@ -119,6 +119,7 @@ export default class ProfileStore {
         this.loading = true;
         try {
             await apiClient.Profiles.updateProfile(profile);
+            store.activityStore.updateAttendeeProfile(store.userStore.user?.id!, profile.displayName!, profile.bio!);
             runInAction(() => {
                 if (profile.displayName && profile.displayName !==
                     store.userStore.user?.displayName) {
