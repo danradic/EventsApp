@@ -18,12 +18,7 @@ namespace EventsApp.Application.Features.UserProfiles.Commands.UpdateUserProfile
 
         public async Task<Result<User>> Handle(UpdateUserProfileCommand request, CancellationToken cancellationToken)
         {
-            var userUpdateResult = await _userAccessor.UpdateUser(_mapper.Map<User>(request));
-
-            if (!userUpdateResult.IsSuccess)
-                return Result<User>.Failure(errorType: userUpdateResult.ErrorType, message: userUpdateResult.Message);
-
-            return Result<User>.Success(userUpdateResult.Value);
+            return await _userAccessor.UpdateUser(_mapper.Map<User>(request));
         }
     }
 }
