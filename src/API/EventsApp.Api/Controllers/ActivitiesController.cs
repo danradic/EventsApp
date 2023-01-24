@@ -10,8 +10,9 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace EventsApp.Api.Controllers
 {
+    [Authorize]
     public class ActivitiesController : BaseApiController
-    {
+    {   
         private readonly IMediator _mediator;
 
         public ActivitiesController(IMediator mediator)

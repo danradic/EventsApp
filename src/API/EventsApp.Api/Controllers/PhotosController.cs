@@ -3,10 +3,12 @@ using EventsApp.Application.Features.Photos.Commands.DeletePhotoCommand;
 using EventsApp.Application.Features.Photos.Commands.SetMainPhotoCommand;
 using EventsApp.Infrastructure.Services.Photos;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace EventsApp.Api.Controllers
 {
+    [Authorize]
     public class PhotosController : BaseApiController
     {
         private readonly IMediator _mediator;
