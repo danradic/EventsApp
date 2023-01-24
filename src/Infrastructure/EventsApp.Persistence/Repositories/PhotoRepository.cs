@@ -15,6 +15,13 @@ namespace EventsApp.Persistence.Repositories
             return await _dbContext.Photos.Where(a => a.ApplicationUserId == userId).ToListAsync();
         }
 
+        public async Task<List<Photo>> GetMainPhotos(List<string> userIds)
+        {
+            return await _dbContext.Photos
+                .Where(a => userIds.Contains(a.ApplicationUserId) && a.IsMain == true)
+                .ToListAsync();
+        }
+
         public async Task<Photo> GetMainPhoto(string userId)
         {
             return await _dbContext.Photos.FirstOrDefaultAsync(a => a.ApplicationUserId == userId && a.IsMain);

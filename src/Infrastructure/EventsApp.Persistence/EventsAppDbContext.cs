@@ -18,5 +18,6 @@ namespace EventsApp.Persistence
         public DbSet<Activity> Activities { get; set; }
         public DbSet<ActivityAttendee> ActivityAttendees { get; set; }
         public DbSet<Photo> Photos { get; set; }
+        public DbSet<Comment> Comments { get; set; }
     }
 }

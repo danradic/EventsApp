@@ -18,7 +18,7 @@ export default observer(function NavBar() {
                     {userStore.isLoggedIn ? (
                         <>
                             <Menu.Item position='right'>
-                                <Image avatar spaced='right' src={userStore.user?.image || '/assets/user.png'} />
+                                <Image avatar spaced='right' src={userStore.user?.image || '/assets/user.png'} className="navbar-user-avatar" />
                                 <Dropdown pointing='top left' text={userStore.user?.displayName}>
                                     <Dropdown.Menu>
                                         <Dropdown.Item as={Link} to={`/profiles/${userStore.user?.id}`} text='My Profile' icon='user' />

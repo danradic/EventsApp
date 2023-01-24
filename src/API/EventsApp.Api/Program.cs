@@ -1,5 +1,6 @@
 using System.Text.Json.Serialization;
 using EventsApp.Api.Middleware;
+using EventsApp.Api.SignalR;
 using EventsApp.Application;
 using EventsApp.Identity;
 using EventsApp.Infrastructure;
@@ -53,6 +54,7 @@ builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices(builder.Configuration);
 builder.Services.AddIdentityServices(builder.Configuration);
 builder.Services.AddInfrastructureServices(builder.Configuration);
+builder.Services.AddSignalR();
 
 builder.Services.AddControllers( options => 
 {
@@ -73,7 +75,11 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddCors(options => {
     options.AddPolicy("CorsPolicy", policy => {
-        policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+        policy
+        .AllowAnyMethod()
+        .AllowAnyHeader()
+        .AllowCredentials()
+        .WithOrigins("http://localhost:3000");
     });
 });
 
@@ -100,6 +106,7 @@ app.UseCors("CorsPolicy");
 app.UseAuthorization();
 
 app.MapControllers();
+app.MapHub<ChatHub>("/chat");
 
 
 app.Run();

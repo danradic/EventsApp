@@ -4,6 +4,8 @@ using EventsApp.Application.Features.Activities.Commands.CreateActivity;
 using EventsApp.Application.Features.Activities.Commands.UpdateActivity;
 using EventsApp.Application.Features.Activities.Queries.GetActivitiesList;
 using EventsApp.Application.Features.Activities.Queries.GetActivityDetail;
+using EventsApp.Application.Features.Comments.Commands.CreateComment;
+using EventsApp.Application.Features.Comments.Queries.GetCommentsList;
 using EventsApp.Application.Features.Photos.Commands.CreatePhotoCommand;
 using EventsApp.Application.Features.UserProfiles.Commands.UpdateUserProfile;
 using EventsApp.Application.Models;
@@ -38,7 +40,9 @@ namespace EventsApp.Application.Profiles
             CreateMap<Activity, ActivityViewModel>().ReverseMap();
 
             CreateMap<Photo, PhotoViewModel>().ReverseMap();
-            
+            CreateMap<Comment, CommentDto>().ReverseMap();
+            CreateMap<Comment, CommentsListDto>().ReverseMap();
+
             CreateMap<Error, ValidationFailure>().ReverseMap();
         }
     }

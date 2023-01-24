@@ -30,7 +30,7 @@ axios.interceptors.request.use(config => {
 });
 
 axios.interceptors.response.use(async response => {
-    await sleep(700);
+    //await sleep(700);
     return response;
 }, (error: AxiosError) => {
     const { data, status } = error.response as AxiosResponse;

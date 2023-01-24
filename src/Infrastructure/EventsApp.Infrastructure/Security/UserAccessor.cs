@@ -26,7 +26,7 @@ namespace EventsApp.Infrastructure.Security
 
         public async Task<Result<User>> GetUser(string userId = null)
         {
-            ApplicationUser appUser = new();
+            ApplicationUser appUser = null;
 
             bool getCurrentUser = userId == null;
 
@@ -45,6 +45,27 @@ namespace EventsApp.Infrastructure.Security
                 return Result<User>.Failure(errorType: ErrorType.NotFound, message: "User not found.");
 
             return Result<User>.Success(Mappings.FromApplicationUser(appUser));
+        }
+
+        public async Task<Result<List<User>>> GetUsers(List<string> userIds = null)
+        {
+            List<ApplicationUser> appUsers = null;
+
+            bool getAllUsers = userIds == null;
+
+            if (getAllUsers)
+            {
+                appUsers = await _userManager.Users.ToListAsync();
+            }
+            else
+            {
+                appUsers = await _userManager.Users.Where(u => userIds.Contains(u.Id)).ToListAsync();
+            }
+
+            if (appUsers == null)
+                return Result<List<User>>.Failure(errorType: ErrorType.NotFound, message: "User not found.");
+
+            return Result<List<User>>.Success(Mappings.FromApplicationUsers(appUsers));
         }
 
         public async Task<Result<User>> UpdateUser(User user)

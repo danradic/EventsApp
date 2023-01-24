@@ -1,4 +1,5 @@
 import { makeAutoObservable, runInAction } from "mobx";
+import { threadId } from "worker_threads";
 import apiClient from "../api/apiClient";
 import { User, UserFormValues } from "../models/user";
 import { router } from "../router/Routes";
@@ -21,6 +22,12 @@ export default class UserStore {
             store.commonStore.setToken(user.token);
             store.commonStore.setTokenExpires(user.tokenExpires);
             runInAction(()=> this.user = user);
+            if(!this.user?.image)
+            {
+                console.log("no image");;
+                const profile = await apiClient.Profiles.get(user?.id!);
+                this.setUserPhoto(profile.image!);
+            }
             router.navigate('/activities');
             store.modalStore.closeModal();
         } catch (error) {
@@ -50,11 +57,13 @@ export default class UserStore {
     getUser = async () => {
         try {
             const user = await apiClient.Account.current();
-            const profile = await apiClient.Profiles.get(user?.id!);
-            runInAction( () => {
-                this.user = user
-                if (this.user) this.user.image = profile.image;
-            });
+            runInAction(() => this.user = user);
+            if(!this.user?.image)
+            {
+                console.log("no image");;
+                const profile = await apiClient.Profiles.get(user?.id!);
+                this.setUserPhoto(profile.image!);
+            }
         } catch (error) {
             console.log(error);
         }
